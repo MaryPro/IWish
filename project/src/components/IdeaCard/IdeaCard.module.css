@@ -1,0 +1,6 @@
+.card {
+  background-color: rgba(214, 173, 95, 0.4);
+  margin: 5px 5px;
+  display: flex;
+  justify-content: space-around;
+}

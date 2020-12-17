@@ -1,13 +1,16 @@
-export default function IdeaCard() {
+import { Col } from 'react-bootstrap'
+import style from './IdeaCard.module.css'
+export default function IdeaCard({idea}) {
   return (
-    <div style={{border: "1px solid"}}>
-      я карточкa
-      <div> <a href="#"> like </a> </div>
-      <img scr="" alt="это картинка" />
-      <div>
-        это рейтинг
-        это название идеи
-      </div>
+    <div className={style.card}>
+      <Col>
+        <div> <a href="#" > like </a> </div>
+        <img src={idea.img} alt={idea.titleGift} width="100"/>
+        <div>
+          {idea.rate}
+          {idea.titleGift}
+        </div>
+      </Col>
     </div>
   )
 }
