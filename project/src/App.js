@@ -1,10 +1,11 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-
+import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar/>
       <Switch>
 
         <Route exact path='/'>
