@@ -1,12 +1,13 @@
 import {React, useState} from "react";
 import {Form, Button, Modal} from 'react-bootstrap'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchUserRegAC } from "../../redux/actionCreatorsUser";
 
 
 //модалка регистрации
 function SignupModal({show, setShow}) {
   const dispatch = useDispatch();
+    const resultSignup = useSelector(store => store.user)
     // const [show, setShow] = useState(false);
     const subReg = (e) => {
       e.preventDefault();
@@ -22,7 +23,10 @@ function SignupModal({show, setShow}) {
         }
       } = e.target
       dispatch(fetchUserRegAC({ login, password, email }))
-      setShow(false);
+        if(!resultSignup.isAuth || resultSignup.isAuth === false) {alert("Ошибка регистрации. Попробуйте ввести другой логин или email")} else {if (resultSignup.isAuth || resultSignup.isAuth === true) {alert("Регистрация прошла успешно! Добро Пожаловать!")}
+      };
+        setShow(false)
+      console.log(resultSignup)
     }
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

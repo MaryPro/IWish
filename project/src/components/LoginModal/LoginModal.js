@@ -1,5 +1,6 @@
-import { React, useState } from "react";
+import { React, useState} from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
+import {useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 
@@ -7,6 +8,7 @@ import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 //модалка
 function LoginModal({ show, setShow }) {
   // const [show, setShow] = useState(false);
+  const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
 
   const subLog = (e) => {
@@ -20,7 +22,10 @@ function LoginModal({ show, setShow }) {
       }
     } = e.target
     dispatch(fetchUserLoginAC({ login, password }))
+    if (resultLogin.currentUser.success === false) {alert(resultLogin.currentUser.message)}
     setShow(false);
+
+    console.log(resultLogin.currentUser.success)
   }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
