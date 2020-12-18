@@ -27,4 +27,13 @@ export const getWishListAC = (payload) => ({
   type: GET_WISH_LIST,
   payload
 
-})
+});
+
+// export const fetchGetWishListAC = () => {
+//   return dispatch => {
+//     fetch("/login")
+//         .then(res => res.json())
+//         .then(wishlists => dispatch(getWishListAC(wishlists)))
+//   }
+// };
+

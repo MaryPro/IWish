@@ -4,14 +4,18 @@ import { Container, Row, Button } from 'react-bootstrap'
 import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
 import NavFilter from './components/NavFilter/NavFilter';
-
+import {useSelector} from 'react-redux'
 import CategoryList from './components/CategoryList/CategoryList'
 import UserPage from './components/UserPage/UserPage'
 function App() {
+  const authCheck = useSelector(store => store.user)
+ const logged = authCheck.isAuth
+
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
+        <NavBar/>
+
+        <Switch>
 
         <Route exact path='/'>
           <Container>

@@ -3,6 +3,8 @@ import {Navbar, Nav} from 'react-bootstrap'
 
 import LoginModal from '../LoginModal/LoginModal'
 import SignupModal from '../SignupModal/SignupModal'
+import {useSelector} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 function NavBar() {
 //функция с модалкой
@@ -17,16 +19,21 @@ function NavBar() {
     }
 
 
+    const authCheck = useSelector(store => store.user)
+    const logged = authCheck.isAuth
+
     return (
         <>
             <Navbar bg="success" variant="dark">
                 <Navbar.Brand href="/dashboard">IWish</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/">Главная</Nav.Link>
-                    <Nav.Link href="#signup" onClick={signupVisible}>Регистрация</Nav.Link>
-                    <SignupModal setShow = {setShowSignup} show = {showSignup}/>
-                    <Nav.Link href="#login" onClick={visibleModal}>Войти</Nav.Link>
-                <LoginModal setShow = {setShow} show = {show}/>
+                    {!logged || logged === false ? <Nav.Link href="#signup" onClick={signupVisible}>Регистрация</Nav.Link> : null}
+                    <SignupModal setShow={setShowSignup} show={showSignup}/>
+                    {!logged || logged === false ?<Nav.Link href="#login" onClick={visibleModal}>Войти</Nav.Link> : null}
+                    <LoginModal setShow={setShow} show={show}/>
+                    {logged && logged === true ? <Nav.Link href="/dashboard">Личный кабинет</Nav.Link> : null}
+
                 </Nav>
             </Navbar>
         </>
