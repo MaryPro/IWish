@@ -3,14 +3,13 @@ import {Form, Button, Modal } from 'react-bootstrap'
 
 
 //модалка
-function LoginModal() {
-    const [show, setShow] = useState(false);
+function LoginModal({show, setShow}) {
+    // const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return(
         <>
-
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
@@ -18,7 +17,7 @@ function LoginModal() {
             <Modal.Body>
 
                 <Form>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicText">
                         <Form.Label>Логин</Form.Label>
                         <Form.Control type="text" placeholder="Введите логин"/>
                         <Form.Text className="text-muted">
@@ -44,4 +43,4 @@ function LoginModal() {
             </>
             )}
 
-module.exports = {LoginModal}
+export default LoginModal
