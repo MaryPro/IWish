@@ -4,6 +4,7 @@ import { Container, Row, Button } from 'react-bootstrap'
 import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
 import CategoryList from './components/CategoryList/CategoryList'
+import UserPage from './components/UserPage/UserPage'
 function App() {
   return (
     <BrowserRouter>
@@ -25,8 +26,9 @@ function App() {
           <IdeasBoard />
         </Route>
 
-        <Route path='/dashboard/:id'>
+        <Route path='/dashboard/'>
           Личный кабинет
+          <UserPage />
         </Route>
 
       </Switch>
