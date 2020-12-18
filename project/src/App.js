@@ -1,6 +1,7 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
+import NavFilter from './components/NavFilter/NavFilter';
 
 function App() {
   return (
@@ -14,7 +15,6 @@ function App() {
         </Route>
 
         <Route path='/ideas/:category'>
-          {/* тут идеи подарков */}
           <IdeasBoard />
         </Route>
       

@@ -6,21 +6,21 @@ import style from './IdeaList.module.css'
 
 import IdeaCard from '../IdeaCard/IdeaCard'
 
-export default function IdeaList() {
+export default function IdeaList({dispatch, ideas, res, setRes }) {
 
-  const dispatch = useDispatch()
-  const { ideas } = useSelector(store => store)
+  // const dispatch = useDispatch()
+  // const { ideas } = useSelector(store => store)
 
-  useEffect(() => {
-    dispatch(fetchGetIdeasAC())
+  // useEffect(() => {
+  //   dispatch(fetchGetIdeasAC())
 
-  }, [])
+  // }, [])
 
   return (
     <div className={style.list}>
       <Row>
       
-      {ideas && ideas.map(el => <div key={el.id}> <IdeaCard idea={el}/> </div> )}
+      {res && res.map(el => <div key={el.id}> <IdeaCard idea={el}/> </div> )}
       </Row>
     </div>
   )
