@@ -20,9 +20,9 @@ function NavBar() {
     return (
         <>
             <Navbar bg="success" variant="dark">
-                <Navbar.Brand href="#home">IWish</Navbar.Brand>
+                <Navbar.Brand href="/dashboard">IWish</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Главная</Nav.Link>
+                    <Nav.Link href="/">Главная</Nav.Link>
                     <Nav.Link href="#signup" onClick={signupVisible}>Регистрация</Nav.Link>
                     <SignupModal setShow = {setShowSignup} show = {showSignup}/>
                     <Nav.Link href="#login" onClick={visibleModal}>Войти</Nav.Link>

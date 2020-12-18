@@ -6,7 +6,6 @@ export default function IdeaCard({ idea }) {
     <div className={style.card}>
       <Col>
         <DropdownButton
-          className={style.dropdownToggle}
           menuAlign="right"
           title={<i class="far fa-heart"></i>}
           id="dropdown-menu-align-right"
@@ -19,8 +18,11 @@ export default function IdeaCard({ idea }) {
         </DropdownButton>
 
         <img src={idea.img} alt={idea.titleGift} width="100" />
-        <div>
-          {idea.rate}
+        <div className={style.asd}>
+          <p className={style.star} style={{fontSize: '40px', color: 'Dodgerblue'}}>
+            <i class="fas fa-star"></i>
+          </p>
+         <span  className={style.rate}>{idea.rate}</span> 
           {idea.titleGift}
         </div>
       </Col>
