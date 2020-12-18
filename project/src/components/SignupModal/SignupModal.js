@@ -1,11 +1,29 @@
 import {React, useState} from "react";
 import {Form, Button, Modal} from 'react-bootstrap'
+import { useDispatch } from "react-redux";
+import { fetchUserRegAC } from "../../redux/actionCreatorsUser";
 
 
 //модалка регистрации
 function SignupModal({show, setShow}) {
+  const dispatch = useDispatch();
     // const [show, setShow] = useState(false);
-
+    const subReg = (e) => {
+      e.preventDefault();
+      const {
+        login: {
+          value: login
+        },
+        password: {
+          value: password
+        },
+        email: {
+          value: email
+        }
+      } = e.target
+      dispatch(fetchUserRegAC({ login, password, email }))
+      setShow(false);
+    }
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
@@ -16,11 +34,11 @@ function SignupModal({show, setShow}) {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <Form>
+                    <Form onSubmit={subReg}>
 
                         <Form.Group controlId="formBasicText">
                             <Form.Label>Логин</Form.Label>
-                            <Form.Control type="text" placeholder="Придумайте и введите логин"/>
+                            <Form.Control name="login" type="text" placeholder="Придумайте и введите логин"/>
                             <Form.Text className="text-muted">
                                 Мы уважаем право на сохранность личных данных и поэтому не собираем и не передаем
                                 информацию о Вас третьим лицам.
@@ -29,7 +47,7 @@ function SignupModal({show, setShow}) {
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Введите адрес Вашей эектронной почты"/>
+                            <Form.Control name="email"  type="email" placeholder="Введите адрес Вашей эектронной почты"/>
                             <Form.Text className="text-muted">
                                 {/*Мы уважаем право на сохранность личных данных и поэтому не собираем и не передаем*/}
                                 {/*информацию о Вас третьим лицам.*/}
@@ -38,7 +56,7 @@ function SignupModal({show, setShow}) {
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Пароль</Form.Label>
-                            <Form.Control type="password" placeholder="Введите пароль"/>
+                            <Form.Control name="password" type="password" placeholder="Введите пароль"/>
                         </Form.Group>
                         <Button variant="success" type="submit">
                             Зарегистрироваться
