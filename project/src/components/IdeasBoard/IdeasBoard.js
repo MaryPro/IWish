@@ -16,12 +16,11 @@ export default function IdeasBoard() {
   
   useEffect(() => {
     dispatch(fetchGetIdeasAC())
-
   }, [])
+
   useEffect(() => {
     setRes(()=> ideas)
-    // console.log(res);
-  }, [ideas])
+       }, [ideas])
 
   return (
     <>
