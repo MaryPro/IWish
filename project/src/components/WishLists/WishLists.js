@@ -2,6 +2,7 @@ import {Alert} from "react-bootstrap"
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetWishListAC } from '../../redux/actionCreators'
+import CarouselList from '../CarouselList/CarouselList'
 export default function WishLists() {
 
 
@@ -15,9 +16,15 @@ export default function WishLists() {
 
     return(
         <>
-            {wishlists.map((wishlist) => <Alert variant='success'>
+            {wishlists.map((wishlist) => <div>
+
+                <Alert variant='success' key = {Math.random()}>
                 {wishlist.titleWish}
-            </Alert>)
+            </Alert>
+            <CarouselList gift = {wishlists.map(el => el.gifts)} />
+
+
+            </div>)
 
             }
             </>
