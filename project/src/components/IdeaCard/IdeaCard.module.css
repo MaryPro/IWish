@@ -4,6 +4,18 @@
   display: flex;
   justify-content: space-around;
 }
-.dropdownToggle {
-  content: none;
+/* .rate {
+  position: absolute; 
+  z-index: 0;
+} */
+
+.star {
+ position: absolute; 
+ top: 0;
+  z-index: 0;
+}
+
+.asd {
+ position: relative; 
+  
 }
