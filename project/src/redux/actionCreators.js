@@ -2,9 +2,11 @@ import { GET_IDEAS } from './actionTypes'
 import {GET_WISH_LIST} from './actionTypes'
 export const fetchGetIdeasAC = () => {
   return dispatch => {
-    fetch("https://my-json-server.typicode.com/FireguardSPB/iwish_placeholder/gifts")
+    fetch('/getgoods')
       .then(res => res.json())
       .then(ideas => dispatch(getIdeasAC(ideas)))
+
+
   }
 };
 //

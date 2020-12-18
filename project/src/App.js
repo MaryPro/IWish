@@ -3,6 +3,8 @@ import { Container, Row, Button } from 'react-bootstrap'
 
 import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
+import NavFilter from './components/NavFilter/NavFilter';
+
 import CategoryList from './components/CategoryList/CategoryList'
 import UserPage from './components/UserPage/UserPage'
 function App() {
@@ -22,7 +24,6 @@ function App() {
         </Route>
 
         <Route path='/ideas/:category'>
-          {/* тут идеи подарков */}
           <IdeasBoard />
         </Route>
 
