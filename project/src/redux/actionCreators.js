@@ -5,8 +5,6 @@ export const fetchGetIdeasAC = () => {
     fetch('/getgoods')
       .then(res => res.json())
       .then(ideas => dispatch(getIdeasAC(ideas)))
-
-
   }
 };
 //

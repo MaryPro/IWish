@@ -1,4 +1,5 @@
 import { Dropdown, DropdownButton, Col } from 'react-bootstrap'
+import Star from './Star/Star'
 import style from './IdeaCard.module.css'
 
 export default function IdeaCard({ idea }) {
@@ -16,13 +17,12 @@ export default function IdeaCard({ idea }) {
           <Dropdown.Divider />
           <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
         </DropdownButton>
-
-        <img src={idea.img} alt={idea.titleGift} width="100" />
-        <div className={style.asd}>
-          <p className={style.star} style={{fontSize: '40px', color: 'Dodgerblue'}}>
-            <i class="fas fa-star"></i>
-          </p>
-         <span  className={style.rate}>{idea.rate}</span> 
+        <div>
+          <img src={idea.img} alt={idea.titleGift} width="200" />
+        </div>
+       
+        <div className={style.description}>
+          <Star idea={idea}/>
           {idea.titleGift}
         </div>
       </Col>
