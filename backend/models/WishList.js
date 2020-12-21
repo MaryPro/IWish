@@ -8,6 +8,10 @@ const wishListSchema = new Schema({
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Good'
     // },
+    user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+         },
     display: {type: Boolean}
 })
 

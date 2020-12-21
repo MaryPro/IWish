@@ -1,15 +1,15 @@
 const WishList = require('../models/WishList')
 
-
 module.exports.addWishListToBase  = async function(req, res) {
     try {
-        const { inputText, gifts} = req.body
+        const { inputText, gifts, userID} = req.body
         console.log(req.body)
         console.log(inputText)
         // const findList = await WishList.findOne(inputText)
         const user = new WishList({
             titleWish: inputText,
                 gifts: gifts,
+            user: userID,
             display: true
         })
         await user.save()
@@ -26,15 +26,16 @@ module.exports.addWishListToBase  = async function(req, res) {
     }
 }
 module.exports.getWishList = async function (req, res) {
+    const {id} = req.query
     try {
-        const goods = await WishList.find();
-        if (!goods) {
-            return res.status(404).json({
-                success: false,
-                message: 'Списков нет'
-            })
+        const goods = await WishList.find({user: id});
+        if (goods) {
+            return res.status(200).json(goods)
+            //     success: false,
+            //     message: 'Списков нет'
+            // })
         }
-        return res.status(200).json(goods)
+        return res.status(404).json('success: false')
     } catch (e) {
         res.send({ message: "Server error" })
     }
