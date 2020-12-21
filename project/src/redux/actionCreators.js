@@ -1,5 +1,6 @@
-import { GET_IDEAS } from './actionTypes'
+import { GET_IDEAS, ADD_IDEA} from './actionTypes'
 import {GET_WISH_LIST} from './actionTypes'
+
 export const fetchGetIdeasAC = () => {
   return dispatch => {
     fetch('/getgoods')
@@ -7,6 +8,21 @@ export const fetchGetIdeasAC = () => {
       .then(ideas => dispatch(getIdeasAC(ideas)))
   }
 };
+
+export const fetchPostIdeaAC = (payload) => {
+  console.log(payload, 'fetch');
+  return dispatch => {
+    fetch(' http://localhost:3001/addidea', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(res => res.json())
+      .then(idea => console.log(idea , 'answer'))
+  }
+}
 //
 export const fetchGetWishListAC = () => {
   return dispatch => {
@@ -18,6 +34,11 @@ export const fetchGetWishListAC = () => {
 
 export const getIdeasAC = (payload) => ({
   type: GET_IDEAS,
+  payload
+});
+
+export const addIdeasAC = (payload) => ({
+  type: ADD_IDEA,
   payload
 });
 

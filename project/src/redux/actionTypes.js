@@ -3,3 +3,4 @@ export const GET_WISH_LIST = 'GET_WISH_LIST'
 export const REG_USER = 'REG_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER  = 'LOGOUT_USER';
+export const ADD_IDEA = 'ADD_IDEA'

@@ -20,7 +20,7 @@ export default function IdeaList({dispatch, ideas, res, setRes }) {
     <div className={style.list}>
       <Row>
       
-      {res && res.map(el => <div key={el.id}> <IdeaCard idea={el}/> </div> )}
+      {res && res.map(el => <div key={el.id + Math.random()}> <IdeaCard idea={el}/> </div> )}
       </Row>
     </div>
   )
