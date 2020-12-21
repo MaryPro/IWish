@@ -3,12 +3,12 @@ const Schema = mongoose.Schema
 
 const goodSchema = new Schema({
   titleWish: { type: String, required: true },
-  titleGift: { type: String},
+  // titleGift: { type: String},
   description: { type: String },
-  img: { type: String },
-  rate: { type: Number },
+  img: { type: String, default: 'https://st4.depositphotos.com/2381417/26959/i/600/depositphotos_269592716-stock-photo-thumbnail-images-placeholder-forums-blogs.jpg' },
+  rate: { type: Number, default: 0 },
   tag: [],
-  display: {type: Boolean}
+  display: {type: Boolean, default: true}
 })
 
 module.exports = mongoose.model('Good', goodSchema)

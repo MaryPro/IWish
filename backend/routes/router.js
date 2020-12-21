@@ -8,6 +8,9 @@ router
   .route('/getgoods')
   .get(controllerGoods.gets);
 
+router
+  .route('/addidea')
+  .post(controllerGoods.addidea);
 
 router
   .route('/registration')
