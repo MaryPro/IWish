@@ -9,6 +9,11 @@ const controllerWishList = require('../controllers/controllerWishList')
 router
   .route('/getgoods')
   .get(controllerGoods.gets);
+
+router
+  .route('/addidea')
+  .post(controllerGoods.addidea);
+
 router
     .route('/wishlists')
     .post(controllerWishList.addWishListToBase)

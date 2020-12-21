@@ -8,7 +8,7 @@ function Categories({ideas, res}) {
   return (
     <div>
        {ideas ? unuqTag && unuqTag.map((tag) => <Category key={Math.random()} tag={tag}  unuqTag={unuqTag}/>) : null}
-      {ideas ? <hr></hr>: null}
+      {/* {ideas ? <hr></hr>: null} */}
     </div>
   );
 }

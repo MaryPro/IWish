@@ -15,3 +15,15 @@ module.exports.gets = async function (req, res) {
     res.send({ message: "Server error" })
   }
 }
+
+module.exports.addidea = async function (req,res) {
+    const  { titleGift, description, tag, img} = req.body
+    const idea =  new Good({
+      titleGift, 
+      description,
+      tag,
+      img
+    })
+    await idea.save()
+    return res.json(idea)
+}
