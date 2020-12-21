@@ -7,5 +7,5 @@ import {wishListReducer} from './wishListReducer';
 export const rootReducer = combineReducers({
   user: userReducer,
   ideas: ideasReducer,
-  wishlists: wishListReducer
+  wishlists: wishListReducer,
 })

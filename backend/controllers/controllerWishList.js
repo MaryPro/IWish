@@ -39,3 +39,18 @@ module.exports.getWishList = async function (req, res) {
         res.send({ message: "Server error" })
     }
 }
+// module.exports.deleteWishList = async function (req, res) {
+//     const { inputText, gifts} = req.body
+//     try {
+//         const goods = await WishList.findOne();
+//         if (!goods) {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: 'Списков нет'
+//             })
+//         }
+//         return res.status(200).json(goods)
+//     } catch (e) {
+//         res.send({ message: "Server error" })
+//     }
+// }

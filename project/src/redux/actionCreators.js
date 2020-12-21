@@ -38,6 +38,9 @@ export const getWishListAC = (payload) => ({
   payload
 
 });
+export const getWishListUpdateAC = () => ({
+  type: DELETE_WISH_LIST
+})
 
 // export const fetchGetWishListAC = () => {
 //   return dispatch => {
