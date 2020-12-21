@@ -1,6 +1,5 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {addListWishAC, fetchGetWishListAC, getWishListAC, getWishListUpdateAC} from "../../redux/actionCreators";
-import {useEffect, useState, useContext} from "react";
+import {useDispatch} from 'react-redux';
+import { useState} from "react";
 import React from "react";
 import style from "./AddWishListForm.module.css"
 function AddWishListForm({indepCount, setIndepCount}) {

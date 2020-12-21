@@ -1,4 +1,4 @@
-import { Dropdown, DropdownButton, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import Star from './Star/Star'
 import style from './IdeaCard.module.css'
 
@@ -23,7 +23,7 @@ export default function IdeaCard({ idea }) {
         
         <div className={style.ideaimg} >
           <div className={style.heart}>
-            {<i class="fas fa-heart"></i>}
+            {<i className="fas fa-heart"></i>}
           </div>
           <img src={idea.img} alt={idea.titleGift} width="220" height='220'/>
         </div>

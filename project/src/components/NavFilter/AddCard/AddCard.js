@@ -63,7 +63,7 @@ export default function AddCard({ show, setShow }) {
             <Form.Group className="formBasicCheckBox">
               <Form.Label>Кому подходит подарок? Выберете все подходящие категории</Form.Label>
               {categories.map((category) => (
-                <Form.Check
+                <Form.Check key={Math.random()}
                   name='category'
                   type='checkbox'
                   id={category}

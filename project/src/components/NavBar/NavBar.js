@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Nav } from 'react-bootstrap'
 import LoginModal from '../LoginModal/LoginModal'
 import SignupModal from '../SignupModal/SignupModal'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
-import { BrowserRouter } from "react-router-dom";
 import style from './NavBar.module.css'
 
 function NavBar() {
