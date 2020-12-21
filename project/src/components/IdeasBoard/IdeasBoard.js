@@ -30,8 +30,11 @@ export default function IdeasBoard() {
             <NavFilter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
           </Col>
           <Col>
+
             Подарки для {category}
             <IdeaList category={category} dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
+
+
           </Col>
         </Row>
       </Container>

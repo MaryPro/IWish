@@ -7,6 +7,7 @@ import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import { BrowserRouter } from "react-router-dom";
 
 function NavBar() {
+
   //функция с модалкой
   const dispatch = useDispatch();
   const logout = () => dispatch(logoutUserAC())
@@ -48,6 +49,7 @@ function NavBar() {
       </Navbar>
     </>
   )
+
 }
 
 export default NavBar;

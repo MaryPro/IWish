@@ -42,8 +42,10 @@ console.log(res)
     <div className={style.list}>
       <Row>
       
+
       {res && res.map(el => <div key={el.id}> <IdeaCard idea={el}/> </div> )}
       {/* {category ? res.map(el => <div key={el.id}> <IdeaCard idea={el}/> </div> ) :null} */}
+
       </Row>
     </div>
   )

@@ -9,7 +9,7 @@ console.log(gift)
             {gift && gift.map((el, i) => <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
+                    src="holder.js/200x200?text=First slide&bg=373940"
                     alt={el[i]}
                 />
                 <Carousel.Caption>
