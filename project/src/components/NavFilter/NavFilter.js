@@ -11,8 +11,9 @@ function NavFilter({ dispatch, ideas, res, setRes }) {
   return (
     <div>
       <Search dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
-      <Filter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
+      {/* <Filter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/> */}
       <AddCard setShow={setShow} show={show} onClick={visibleModal}/>
+
     </div>
   );
 }
