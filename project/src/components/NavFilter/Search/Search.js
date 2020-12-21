@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Categories from '../Categoties/Categories';
+import style from './Search.module.css'
 
 function Search({ dispatch, ideas, res, setRes }) {
   const inp = useRef()
@@ -35,11 +36,11 @@ function Search({ dispatch, ideas, res, setRes }) {
 
   return (
     <div>
-      <div>
-      <input ref={inp} onChange={(e) => {
+      <div >
+      <input className={style.input} ref={inp} onChange={(e) => {
         setStateInput(e.target.value)
       }} value={stateInput} placeholder='Найти' />
-      {stateInput ? <button onClick={clickHandler} >X</button> : null}
+      {stateInput ? <button className={style.button} onClick={clickHandler} >X</button> : null}
     </div>
     <div>
       <Categories res={res} ideas={ideas}/>

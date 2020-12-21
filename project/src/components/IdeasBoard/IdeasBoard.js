@@ -31,7 +31,7 @@ export default function IdeasBoard() {
           </Col>
           <Col>
             Подарки для {category}
-            <IdeaList dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
+            <IdeaList category={category} dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
           </Col>
         </Row>
       </Container>
