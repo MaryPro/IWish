@@ -1,13 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import {addListWishAC} from "../../redux/actionCreators";
-import {useState} from "react";
-function AddWishListForm()  {
+import {useDispatch, useSelector} from 'react-redux';
+import {addListWishAC, fetchGetWishListAC, getWishListAC, getWishListUpdateAC} from "../../redux/actionCreators";
+import {useEffect, useState, useContext} from "react";
+import React from "react";
+
+function AddWishListForm({indepCount, setIndepCount}) {
+
+
     const [inputText, setInputText] = useState(null)
     const gifts = 'aaaa'
-      const dispatchAdd = useDispatch()
+    const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
-        dispatchAdd(addListWishAC(inputText))
+        // dispatchAdd(addListWishAC(inputText))
         // const {name: {value: name}} = e.target;
         fetch('/wishlists', {
             method: 'POST',
@@ -17,27 +21,26 @@ function AddWishListForm()  {
             body: JSON.stringify({inputText: inputText, gifts: gifts})
         })
             .then(res => res.json())
-            // .then(notePad => dispatch(addNotepadAC([notePad]))
-            // ).catch(err => alert(err));
-
-
+        setIndepCount(indepCount => indepCount + 1)
+        console.log(indepCount)
 
     }
 
     return (
 
-<>
-                <form onSubmit={addWishList}>
-            < input type="text"
-                name="wishListName"
-                placeholder="Введите название нового листа желаний"
-                onChange={(e) => setInputText(e.target.value)}
-                    required/>
-                <button type = "submit" >add</button>
+        <>
+            <form onSubmit={addWishList}>
+                < input type="text"
+                        name="wishListName"
+                        placeholder="Введите название нового листа желаний"
+                        onChange={(e) => setInputText(e.target.value)}
+                        required/>
+                <button type="submit">add</button>
 
-                </form>
-</>
+            </form>
+        </>
 
-            )
-            }
-            export default AddWishListForm
+    )
+}
+
+export default AddWishListForm

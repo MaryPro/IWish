@@ -1,4 +1,5 @@
-import { Row, Card} from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
+import style from './CategoryList.module.css'
 import CategoryCard from '../CategoryCard/CategoryCard'
 
 export default function CategoryList() {
@@ -7,11 +8,11 @@ export default function CategoryList() {
     {"Любимым" : "Любимым",
       img: "https://www.brighterkind.com/sites/default/files/Woodbury%20House-Gingerbread%20image.jpg"},
     {"Семье" : "Семье",
-      img: "https://www.pulainfo.hr/wp/wp-content/uploads/2020/10/christmas.jpg"},
+      img: "https://c4.wallpaperflare.com/wallpaper/430/180/62/new-year-cookies-christmas-christmas-wallpaper-preview.jpg"},
     {"Друзьям" : "Друзьям",
       img: "https://www.history.com/.image/c_fill%2Ccs_srgb%2Cfl_progressive%2Ch_400%2Cq_auto:good%2Cw_620/MTY4ODE4ODA4MzY1MDAwNDY1/christmas-gettyimages-184652817.jpg"},
     {"Коллегам" : "Коллегам",
-      img: "https://www.zebcare.nl/wp-content/uploads/2019/12/Christmas-1024x683.jpg"},
+      img: "https://papers.co/wallpaper/papers.co-av77-decoration-holiday-christmas-illustration-art-gold-40-wallpaper.jpg"},
     {"Себе" : "Себе",
       img: "https://api.time.com/wp-content/uploads/2015/12/presents1.jpg?w=600&quality=85"},
     {"Детям" : "Детям",
@@ -19,14 +20,16 @@ export default function CategoryList() {
   ]
 
   return (
-    <>
-      <h2> Категории подарков </h2>
-      <div>Кому выбираете подарок?</div>
+     <div className={style.categories}>
+        <Container>
+          <h2> Категории подарков </h2>
+          <p>Кому выбираете подарок?</p>
 
-      <Row>
-        {categories && categories.map(el => <div key={el + Math.random()}> <CategoryCard categoryObj={el} /> </div>)}
-      </Row>
-    </>
+          <Row>
+            {categories && categories.map(el => <div key={el + Math.random()}> <CategoryCard categoryObj={el} /> </div>)}
+          </Row>
+        </Container>
+      </div>
   )
 }
 
