@@ -22,15 +22,17 @@ export default function AddCard({ show, setShow }) {
     getCheckedCheckBoxes()
 
     const {
-      titleWish: {
-        value: titleWish
+      titleGift: {
+        value: titleGift
       },
       description: {
         value: description
+      },
+      img: {
+          value: img
       }
     } = e.target
-    console.log(titleWish, description, checkboxesChecked, 'addcards');
-    dispatch(fetchPostIdeaAC({ titleWish, description, tag: checkboxesChecked }))
+    dispatch(fetchPostIdeaAC({ titleGift, description, tag: checkboxesChecked, img }))
     setShow(false)
   }
   const handleClose = () => setShow(false);
@@ -50,7 +52,7 @@ export default function AddCard({ show, setShow }) {
 
             <Form.Group controlId="formBasicText">
               <Form.Label>Название идеи</Form.Label>
-              <Form.Control name="titleWish" type="text" placeholder="Придумайте и введите название идеи" />
+              <Form.Control name="titleGift" type="text" placeholder="Придумайте и введите название идеи" />
             </Form.Group>
 
             <Form.Group controlId="formBasicDescription">
@@ -68,7 +70,10 @@ export default function AddCard({ show, setShow }) {
                   label={category}
                 />
               ))}
-
+            <Form.Group>
+              <Form.File id="formControlFile1" label="File input" name="file" />
+              <Form.Control name="img" type="url" placeholder="URL" />
+            </Form.Group>
             </Form.Group>
             <Button variant="success" type="submit">
               Добавить

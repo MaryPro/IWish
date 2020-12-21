@@ -18,7 +18,7 @@ export default function IdeaCard({ idea }) {
           <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
         </DropdownButton>
         <div>
-          <img src={idea.img} alt={idea.titleGift} width="200" />
+          <img src={idea.img} alt={idea.titleGift} width="200" height='200' />
         </div>
        
         <div className={style.description}>

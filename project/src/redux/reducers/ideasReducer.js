@@ -5,7 +5,7 @@ export function ideasReducer(state=[], action) {
     case GET_IDEAS:
       return [...state, ...action.payload]
     case ADD_IDEA:
-      return [action.payload]
+      return [...state, action.payload]
     default:
       return state
   }

@@ -17,18 +17,13 @@ module.exports.gets = async function (req, res) {
 }
 
 module.exports.addidea = async function (req,res) {
-  console.log(req.body, 'contrGoods');
-  try {
-    const  {titleWish, description, tag} = req.body
-    const idea = new Good({
-      titleWish, description, tag
+    const  { titleGift, description, tag, img} = req.body
+    const idea =  new Good({
+      titleGift, 
+      description,
+      tag,
+      img
     })
-    console.log(idea);
     await idea.save()
-
-    return res.json({idea})
-  } catch (error) {
-    return res.send({ message: "Cant add Idea" })
-  }
-  
+    return res.json(idea)
 }

@@ -1,6 +1,7 @@
 import { GET_IDEAS, ADD_IDEA} from './actionTypes'
 import {GET_WISH_LIST} from './actionTypes'
-
+import {ADD_WISH_LIST} from './actionTypes'
+import {DELETE_WISH_LIST} from './actionTypes'
 export const fetchGetIdeasAC = () => {
   return dispatch => {
     fetch('/getgoods')
@@ -10,7 +11,6 @@ export const fetchGetIdeasAC = () => {
 };
 
 export const fetchPostIdeaAC = (payload) => {
-  console.log(payload, 'fetch');
   return dispatch => {
     fetch(' http://localhost:3001/addidea', {
       method: 'POST',
@@ -20,7 +20,7 @@ export const fetchPostIdeaAC = (payload) => {
       body: JSON.stringify(payload)
     })
       .then(res => res.json())
-      .then(idea => console.log(idea , 'answer'))
+      .then(idea => dispatch(addIdeasAC(idea)))
   }
 }
 //
@@ -31,6 +31,16 @@ export const fetchGetWishListAC = () => {
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }
 };
+export const addListWishAC = (payload) => ({
+  type: ADD_WISH_LIST,
+      payload
+
+})
+export const deleteWishListAC = (payload) => ({
+  type: DELETE_WISH_LIST,
+  payload
+
+})
 
 export const getIdeasAC = (payload) => ({
   type: GET_IDEAS,
