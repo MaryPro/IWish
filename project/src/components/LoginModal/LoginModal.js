@@ -1,13 +1,14 @@
-import { React} from "react";
+import { React } from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
-import {useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 
 
 //модалка
 function LoginModal({ show, setShow }) {
-
+  const history = useHistory()
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
 
@@ -22,10 +23,10 @@ function LoginModal({ show, setShow }) {
       }
     } = e.target
     dispatch(fetchUserLoginAC({ login, password }))
-    if (resultLogin.currentUser.success === false) {alert(resultLogin.currentUser.message)}
+    !resultLogin.currentUser.success && alert(resultLogin.currentUser.message)
+    // if (resultLogin.currentUser.success === false) { alert(resultLogin.currentUser.message) }
     setShow(false);
-
-    console.log(resultLogin.currentUser.success)
+    history.push('/dashboard')
   }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -49,7 +50,7 @@ function LoginModal({ show, setShow }) {
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Пароль</Form.Label>
-              <Form.Control  name="password" type="password" placeholder="Введите пароль" />
+              <Form.Control name="password" type="password" placeholder="Введите пароль" />
             </Form.Group>
             <Button variant="success" type="submit">
               Войти

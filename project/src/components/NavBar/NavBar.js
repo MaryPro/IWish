@@ -20,12 +20,15 @@ function NavBar() {
   const signupVisible = () => {
     setShowSignup(true)
   }
+
+
   useEffect(() => {
     const user = localStorage.getItem('user')
+
     if (user) {
       setLogUser(JSON.parse(user))
     };
-  }, [show, showSignup])
+  }, [userLog.isAuth])
 
 
 
