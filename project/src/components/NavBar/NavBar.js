@@ -27,8 +27,6 @@ function NavBar() {
 
     // const idUser = authCheck.currentUser.user._id
 
-
-
     return (
         <>
             <Navbar bg="success" variant="dark">

@@ -8,7 +8,7 @@ export default function IdeaCard({ idea }) {
       <Col>
         <DropdownButton
           menuAlign="right"
-          title={<i class="far fa-heart"></i>}
+          title={<i className="far fa-heart"></i>}
           id="dropdown-menu-align-right"
         >
           <Dropdown.Item eventKey="1">Action</Dropdown.Item>
@@ -18,7 +18,7 @@ export default function IdeaCard({ idea }) {
           <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
         </DropdownButton>
         <div>
-          <img src={idea.img} alt={idea.titleGift} width="200" />
+          <img src={idea.img} alt={idea.titleGift} width="200" height='200' />
         </div>
        
         <div className={style.description}>
