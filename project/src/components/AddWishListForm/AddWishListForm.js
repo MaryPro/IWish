@@ -1,7 +1,7 @@
 import {useDispatch} from 'react-redux';
 import { useState} from "react";
 import React from "react";
-
+import style from "./AddWishListForm.module.css"
 function AddWishListForm({indepCount, setIndepCount}) {
 
 
@@ -10,8 +10,6 @@ function AddWishListForm({indepCount, setIndepCount}) {
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
-        // dispatchAdd(addListWishAC(inputText))
-        // const {name: {value: name}} = e.target;
         fetch('/wishlists', {
             method: 'POST',
             headers: {
@@ -20,7 +18,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
             body: JSON.stringify({inputText: inputText, gifts: gifts})
         })
             .then(res => res.json())
-        setIndepCount(indepCount => indepCount + 1)
+        setIndepCount(indepCount + 1)
         console.log(indepCount)
 
     }
@@ -28,13 +26,13 @@ function AddWishListForm({indepCount, setIndepCount}) {
     return (
 
         <>
-            <form onSubmit={addWishList}>
-                < input type="text"
+            <form  onSubmit={addWishList}>
+                < input className={style.form} type="text"
                         name="wishListName"
                         placeholder="Введите название нового листа желаний"
                         onChange={(e) => setInputText(e.target.value)}
                         required/>
-                <button type="submit">add</button>
+                <button className={style.button} type="submit">Добавить список</button>
 
             </form>
         </>
