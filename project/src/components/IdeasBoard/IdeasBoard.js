@@ -9,30 +9,35 @@ import { fetchGetIdeasAC } from '../../redux/actionCreators'
 export default function IdeasBoard() {
   //нужно передать в category категорию на русском
   const { category } = useParams()
-
+  const [category1, setCategory1] = useState('1')
   const dispatch = useDispatch()
   const { ideas } = useSelector(store => store)
   const [res, setRes] = useState(ideas)
-  
+
   useEffect(() => {
     dispatch(fetchGetIdeasAC())
   }, [])
 
   useEffect(() => {
-    setRes(()=> ideas)
-       }, [ideas])
+    setRes(() => ideas)
+    }, [ideas])
 
+
+  useEffect(() => {
+    setCategory1(category)
+  }, [category])
+console.log(category1);
   return (
     <>
       <Container>
         <Row>
           <Col md={3}>
-            <NavFilter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
+            <NavFilter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes} category1={category1} setCategory1={setCategory1}/>
           </Col>
           <Col>
 
-            Подарки для {category}
-            <IdeaList category={category} dispatch={dispatch} ideas={ideas} res={res} setRes={setRes}/>
+            Подарки {category1}
+            <IdeaList category={category}  category1={category1} setCategory1={setCategory1} dispatch={dispatch} ideas={ideas} res={res} setRes={setRes} />
 
 
           </Col>
