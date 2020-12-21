@@ -1,0 +1,10 @@
+.bar{
+  background-color: #B6B89F;
+  width: 100%;
+}
+
+.div{
+display: flex;
+/* align-items: stretch; */
+justify-content: space-between;
+}

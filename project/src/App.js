@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
         <NavBar/>
-<Informer/>
+
         <Switch>
 
         <Route exact path='/'>

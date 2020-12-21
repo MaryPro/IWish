@@ -36,11 +36,11 @@ function Search({ dispatch, ideas, res, setRes }) {
 
   return (
     <div>
-      <div >
-      <input className={style.input} ref={inp} onChange={(e) => {
+      <div className={style.input} >
+      <input className='form-control' ref={inp} onChange={(e) => {
         setStateInput(e.target.value)
       }} value={stateInput} placeholder='Найти' />
-      {stateInput ? <button className={style.button} onClick={clickHandler} >X</button> : null}
+      {stateInput ? <button className={`btn btn-primary mb-2 ${style.button}`} onClick={clickHandler} >Очистить</button> : null}
     </div>
     <div>
       <Categories res={res} ideas={ideas}/>

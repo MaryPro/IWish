@@ -5,6 +5,7 @@ import SignupModal from '../SignupModal/SignupModal'
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import { BrowserRouter } from "react-router-dom";
+import style from './NavBar.module.css'
 
 function NavBar() {
 
@@ -30,24 +31,32 @@ function NavBar() {
 
 
   return (
-    <>
-      <Navbar bg="success" variant="dark">
-        {userLog.currentUser.user.login ? <h1 style={{ alignItem: 'right' }}>{userLog.currentUser.user.login}</h1> : null}
-        <Navbar.Brand href="/dashboard">IWish</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Главная</Nav.Link>
-          {!userLog.isAuth ?
-            <Nav.Link href="#signup" onClick={signupVisible}>Регистрация</Nav.Link> : null}
-          <SignupModal setShow={setShowSignup} show={showSignup} />
-          {!userLog.isAuth ?
-            <Nav.Link href="#login" onClick={visibleModal}>Войти</Nav.Link> : null}
-          <LoginModal setShow={setShow} show={show} />
-          {userLog.isAuth ? <Nav.Link href="/dashboard">Личный кабинет</Nav.Link> : null}
-          {userLog.isAuth ? <Nav.Link href="/" onClick={() => logout()}>Выйти</Nav.Link> : null}
+    <div  >
+      <div className={style.div}>
 
-        </Nav>
-      </Navbar>
-    </>
+        <Navbar className={style.bar} variant="dark">
+          <div >
+            <Navbar.Brand href="/">IWish</Navbar.Brand>
+          </div>
+          <div >
+            <Nav >
+
+              {/* <Nav.Link href="/">Главная</Nav.Link> */}
+              {!userLog.isAuth ?
+                <Nav.Link onClick={signupVisible}>Регистрация</Nav.Link> : null}
+              <SignupModal setShow={setShowSignup} show={showSignup} />
+              {!userLog.isAuth ?
+                <Nav.Link onClick={visibleModal}>Войти</Nav.Link> : null}
+              <LoginModal setShow={setShow} show={show} />
+
+              {userLog.isAuth ? <Nav.Link href="/" onClick={() => logout()}>Выйти</Nav.Link> : null}
+              {userLog.isAuth ? <Nav.Link href="/dashboard">{userLog.currentUser.user.login}</Nav.Link> : null}
+
+            </Nav>
+          </div>
+        </Navbar>
+      </div>
+    </div>
   )
 
 }

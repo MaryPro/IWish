@@ -1,4 +1,5 @@
 import {Row,Col } from 'react-bootstrap'
+import Informer from '../Informer/Informer'
 
 export default function PersonalBoard() {
   return (
@@ -17,6 +18,7 @@ export default function PersonalBoard() {
           <h2>Личный кабинет</h2>
           <p>Тут какая то личная информация</p>
         </Col>
+        <Informer/>
       </Row>
     </>
   )
