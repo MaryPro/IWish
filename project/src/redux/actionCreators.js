@@ -1,5 +1,7 @@
 import { GET_IDEAS } from './actionTypes'
 import {GET_WISH_LIST} from './actionTypes'
+import {ADD_WISH_LIST} from './actionTypes'
+import {DELETE_WISH_LIST} from './actionTypes'
 export const fetchGetIdeasAC = () => {
   return dispatch => {
     fetch('/getgoods')
@@ -17,6 +19,16 @@ export const fetchGetWishListAC = () => {
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }
 };
+export const addListWishAC = (payload) => ({
+  type: ADD_WISH_LIST,
+      payload
+
+})
+export const deleteWishListAC = (payload) => ({
+  type: DELETE_WISH_LIST,
+  payload
+
+})
 
 export const getIdeasAC = (payload) => ({
   type: GET_IDEAS,
