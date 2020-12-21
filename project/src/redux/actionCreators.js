@@ -24,9 +24,15 @@ export const fetchPostIdeaAC = (payload) => {
   }
 }
 //
-export const fetchGetWishListAC = () => {
+export const fetchGetWishListAC = (payload) => {
   return dispatch => {
-    fetch("/wishlists")
+    fetch(`/wishlists/?id=${payload}`,{
+      method: 'GET',
+          headers: {
+      'Content-type': 'application/json'
+    },
+    // body: JSON.stringify(payload)
+  })
         .then(res => res.json())
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }

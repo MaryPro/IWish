@@ -4,22 +4,24 @@ import React from "react";
 import style from "./AddWishListForm.module.css"
 function AddWishListForm({indepCount, setIndepCount}) {
 
+    const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
 
     const [inputText, setInputText] = useState(null)
     const gifts = 'aaaa'
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
+        console.log(userID)
         fetch('/wishlists', {
             method: 'POST',
             headers: {
                 'Content-type': 'Application/json',
             },
-            body: JSON.stringify({inputText: inputText, gifts: gifts})
+            body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID})
         })
             .then(res => res.json())
         setIndepCount(indepCount + 1)
-        console.log(indepCount)
+
 
     }
 
@@ -32,7 +34,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
                         placeholder="Введите название нового листа желаний"
                         onChange={(e) => setInputText(e.target.value)}
                         required/>
-                <button className={style.button} type="submit">Добавить список</button>
+                <button className={style.button} type="submit">Добавить список  </button>
 
             </form>
         </>

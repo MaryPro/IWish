@@ -9,10 +9,10 @@ import style from './WishLists.module.css'
 export default function WishLists() {
     const [indepCount, setIndepCount] = useState(0)
     const dispatch = useDispatch()
-
+    const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
 
     useEffect(() => {
-        dispatch(fetchGetWishListAC())
+        dispatch(fetchGetWishListAC(userID))
 
     }, [indepCount])
     const {wishlists} = useSelector(store => store)
