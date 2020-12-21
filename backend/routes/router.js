@@ -5,12 +5,14 @@ const controllerUser = require('../controllers/controllerUser');
 const controllerGoods = require('../controllers/controllerGoods');
 const controllerWishList = require('../controllers/controllerWishList')
 
+
 router
   .route('/getgoods')
   .get(controllerGoods.gets);
 router
     .route('/wishlists')
     .post(controllerWishList.addWishListToBase)
+    .get(controllerWishList.getWishList)
 router
   .route('/registration')
   .get((req, res) => {

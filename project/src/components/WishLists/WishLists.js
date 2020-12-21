@@ -10,7 +10,7 @@ export default function WishLists() {
     const { wishlists } = useSelector(store => store)
 
     useEffect(() => {
-        dispatch(fetchGetWishListAC())
+        dispatch(fetchGetWishListAC(), [wishlists])
 
     }, [])
 
@@ -22,7 +22,7 @@ export default function WishLists() {
                 <Alert variant='success' key={Math.random()}>
                     {wishlist.titleWish}
                 </Alert>
-                {/*<CarouselList gift={wishlists && wishlists.map(el => el.gifts)}/>*/}
+                <CarouselList gift={wishlists && wishlists.map(el => el.gifts)}/>
 
 
             </div>)

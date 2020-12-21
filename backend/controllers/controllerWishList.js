@@ -25,3 +25,17 @@ module.exports.addWishListToBase  = async function(req, res) {
         res.status(403).json('wrong request')
     }
 }
+module.exports.getWishList = async function (req, res) {
+    try {
+        const goods = await WishList.find();
+        if (!goods) {
+            return res.status(404).json({
+                success: false,
+                message: 'Списков нет'
+            })
+        }
+        return res.status(200).json(goods)
+    } catch (e) {
+        res.send({ message: "Server error" })
+    }
+}
