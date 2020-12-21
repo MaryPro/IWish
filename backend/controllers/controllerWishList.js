@@ -6,13 +6,10 @@ module.exports.addWishListToBase  = async function(req, res) {
         const { inputText, gifts} = req.body
         console.log(req.body)
         console.log(inputText)
-        const findList = await WishList.findOne(inputText)
+        // const findList = await WishList.findOne(inputText)
         const user = new WishList({
             titleWish: inputText,
-                gifts: [{
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Good'
-                }],
+                gifts: gifts,
             display: true
         })
         await user.save()
@@ -23,8 +20,8 @@ module.exports.addWishListToBase  = async function(req, res) {
         })
 
     } catch {
-        if (findList){
-        console.log('Есть такой уже ')}
+        // if (findList){
+        console.log('Есть такой уже ')
         res.status(403).json('wrong request')
     }
 }
