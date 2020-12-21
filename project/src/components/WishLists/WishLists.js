@@ -22,7 +22,28 @@ const [indepCount, setIndepCount] = useState(null)
                 <Alert variant='success' key={Math.random()}>
                     {wishlist.titleWish}
                 </Alert>
-                <CarouselList gift={wishlist && wishlist.gifts}/>
+                {wishlist.gifts !== undefined ? <CarouselList gift={wishlist && wishlist.gifts} key={Math.random()}/> : <h1>Список пока пуст</h1>}
+
+                <button type="submit" id={wishlist._id} onClick={() =>
+
+                    fetch('/wishlists', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-type': 'Application/json',
+                        },
+                        body: JSON.stringify({id: wishlist._id})
+                    })
+                        .then(res => res.json())
+                        .then(mes =>alert(mes.message))
+                        .then(setIndepCount(indepCount => indepCount + 1))
+
+
+
+
+
+                }>удалить список</button>
+
+
 
 
             </div>)

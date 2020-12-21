@@ -32,7 +32,7 @@ function NavBar() {
   return (
     <>
       <Navbar bg="success" variant="dark">
-        {userLog.currentUser.user.login ? <h1 style={{ alignItem: 'right' }}>{userLog.currentUser.user.login}</h1> : null}
+        {/*{userLog.currentUser.user.login ? <h1 style={{ alignItem: 'right' }}>{userLog.currentUser.user.login}</h1> : null}*/}
         <Navbar.Brand href="/dashboard">IWish</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/">Главная</Nav.Link>
