@@ -1,12 +1,9 @@
 import { useEffect } from 'react'
 import { Row } from 'react-bootstrap'
 import style from './IdeaList.module.css'
-
 import IdeaCard from '../IdeaCard/IdeaCard'
 
 export default function IdeaList({ dispatch, ideas, res, setRes, category }) {
-
-
   useEffect(() => {
     setRes(() => ideas.filter(obj => {
       // let showGood = false;
@@ -15,7 +12,6 @@ export default function IdeaList({ dispatch, ideas, res, setRes, category }) {
       // }
       // return showGood
       return obj.tag.includes(category)
-
     }))
   }, [category])
 
