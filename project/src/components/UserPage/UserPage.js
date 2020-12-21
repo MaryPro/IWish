@@ -4,7 +4,6 @@ import {Container,Row,Col } from 'react-bootstrap'
 import PersonalBoard from '../PersonalBoard/PersonalBoard'
 export default function IdeasBoard() {
 
-    // const { category } = useParams()
 
     return (
         <>

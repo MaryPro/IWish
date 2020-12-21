@@ -1,4 +1,4 @@
-import {Carousel} from "react-bootstrap"
+
 export default function CarouselList({gift}) {
 console.log(gift)
     return(

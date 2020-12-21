@@ -1,4 +1,4 @@
-import { React, useState} from "react";
+import { React} from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
 import {useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 
 //модалка
 function LoginModal({ show, setShow }) {
-  // const [show, setShow] = useState(false);
+
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
 
