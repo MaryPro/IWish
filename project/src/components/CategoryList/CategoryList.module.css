@@ -1,0 +1,39 @@
+.main {
+  position: relative;
+  text-align: center;
+  font-size: 60px;
+  display: flex;
+  flex-direction: column;
+  background-image: url(http://www.allwhitebackground.com/images/8/4K-Christmas-Wallpaper-3840x2160-40679.jpg) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.main h1 {
+  font-size: 80px;
+  margin-top: 200px;
+}
+
+.categories {
+  position: relative;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.categories h2 {
+  font-size: 50px;
+  margin-top: 80px;
+}
+
+.categories p {
+  font-size: 30px;
+  margin: 20px 0;
+}
