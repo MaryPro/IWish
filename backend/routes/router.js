@@ -18,7 +18,7 @@ router
     .route('/wishlists')
     .post(controllerWishList.addWishListToBase)
     .get(controllerWishList.getWishList)
-    .delete
+    .delete(controllerWishList.deleteWishList)
 router
   .route('/registration')
   .get((req, res) => {
