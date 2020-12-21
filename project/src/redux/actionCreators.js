@@ -12,7 +12,7 @@ export const fetchGetIdeasAC = () => {
 //
 export const fetchGetWishListAC = () => {
   return dispatch => {
-    fetch("https://my-json-server.typicode.com/FireguardSPB/iwish_placeholder/wishlists")
+    fetch("/wishlists")
         .then(res => res.json())
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }

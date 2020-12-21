@@ -41,28 +41,3 @@ function AddWishListForm()  {
             )
             }
             export default AddWishListForm
-//
-// function NotePadForm() {
-//     const dispatch = useDispatch()
-//     const submitHandler = (e) => {
-//         e.preventDefault();
-//         const {name: {value: name}} = e.target;
-//         fetch('/notepad', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-type': 'Application/json',
-//             },
-//             body: JSON.stringify({name})
-//         })
-//             .then(res => res.json())
-//             .then(notePad => dispatch(addNotepadAC([notePad]))
-//             ).catch(err => alert(err));
-//     }
-//     return (
-//         <form onSubmit={submitHandler}>
-//             <input name="name" placeholder='notepad me'/>
-//             <button type='submit'>Add notepad</button>
-//         </form>
-//
-//     )
-// }
