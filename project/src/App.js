@@ -7,6 +7,7 @@ import NavFilter from './components/NavFilter/NavFilter';
 import {useSelector} from 'react-redux'
 import CategoryList from './components/CategoryList/CategoryList'
 import UserPage from './components/UserPage/UserPage'
+import Informer from './components/Informer/Informer'
 function App() {
   const authCheck = useSelector(store => store.user)
  const logged = authCheck.isAuth
@@ -14,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
         <NavBar/>
-
+<Informer/>
         <Switch>
 
         <Route exact path='/'>
