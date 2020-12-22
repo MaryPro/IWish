@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors')
 const morgan = require('morgan')
-const router = require ('./routes/router');
+const router = require('./routes/router');
 const path = require('path')
 require('dotenv').config()
 
@@ -17,9 +17,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cl
   .then(() => console.log('Connected MongoAtlas'))
   .catch((err) => console.log(err));
 
-  app.use(express.static(path.join(__dirname, 'public', 'build')))
-
-
+app.use(express.static(path.join(__dirname, 'public', 'build')))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
