@@ -81,7 +81,7 @@ function NavBar() {
             <LoginModal setShow={setShow} show={show} />
 
             {userLog.isAuth && <li className="nav-item">
-              <NavLink className="nav-link" to="/" onClick={() => logout}>Выйти</NavLink></li>}
+              <NavLink className="nav-link" to="/" onClick={logout}>Выйти</NavLink></li>}
             {userLog.isAuth && <li className="nav-item">
               <NavLink className="nav-link" to="/dashboard" >{userLog.currentUser.user.login}</NavLink></li>}
           </ul>
