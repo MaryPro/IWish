@@ -32,8 +32,7 @@ export default function WishLists() {
                     <ShareList id={wishlist._id}/>
                     <ButtonDeleteList id={wishlist._id} indepCount={indepCount} setIndepCount={setIndepCount}/>
                 </Alert>
-                {wishlist.gifts !== undefined ? <CarouselList gift={wishlist && wishlist.gifts} key={Math.random()}/> :
-                    <h1>Список пока пуст</h1>}
+                {wishlist.gifts && wishlist.gifts.map(idea => < CarouselList  idea={idea}  key={Math.random()} />)}
 
             </div>)
 

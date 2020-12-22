@@ -36,7 +36,6 @@ function NavBar() {
     if (user) {
       setLogUser(JSON.parse(user))
       console.log('!!!!')
-      console.log(user)
       // tempStore.set('user', userLog.currentUser.user)
       // console.log(tempStore.get('user'))
     };

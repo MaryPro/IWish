@@ -3,9 +3,6 @@ const WishList = require('../models/WishList')
 module.exports.addWishListToBase  = async function(req, res) {
     try {
         const { inputText, gifts, userID} = req.body
-        console.log(req.body)
-        console.log(inputText)
-        // const findList = await WishList.findOne(inputText)
         const user = new WishList({
             titleWish: inputText,
                 gifts: gifts,
@@ -43,7 +40,7 @@ module.exports.getWishList = async function (req, res) {
 
 module.exports.getWishListShare = async function (req, res) {
     const {id} = req.query
-    console.log(id)
+
     try {
         const goods = await WishList.find({_id: id});
         if (goods) {
@@ -75,4 +72,13 @@ module.exports.deleteWishList = async function (req, res) {
     } catch (e) {
         res.send({ message: "Server error" })
     }
+}
+
+module.exports.saveidea = async function (req,res) {
+  const  {wishListTitle, idea} = req.body
+  const old = await WishList.findOne({titleWish: wishListTitle})
+  old.gifts.push(idea)
+  await WishList.findOneAndUpdate({titleWish: wishListTitle}, {gifts: old.gifts}, function(err, wList){
+   res.json('okey its back')
+  });
 }

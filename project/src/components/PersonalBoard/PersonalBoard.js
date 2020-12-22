@@ -13,13 +13,11 @@ export default function PersonalBoard() {
   const [indepCount, setIndepCount] = useState(0)
   const {user} = useSelector(store => store)
   const currUser = user.currentUser.user
-  console.log(currUser, '<<<<user store');
 
   useEffect(() => {
     const userLoc = localStorage.getItem('user')
     userLoc && setLogUser(JSON.parse(userLoc))
     const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
-    console.log(userID, '<<userloc id');
     dispatch(fetchGetUserAC(userID))
   }, [indepCount])
 

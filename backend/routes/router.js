@@ -44,4 +44,8 @@ router
    .route('/users')
    .get(controllerUser.getUser)
 
+  router
+    .route('/saveidea')
+    .post(controllerWishList.saveidea)
+
 module.exports = router;

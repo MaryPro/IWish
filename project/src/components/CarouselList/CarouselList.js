@@ -1,18 +1,11 @@
-
+import IdeaCard from '../IdeaCard/IdeaCard'
 import style from './CarouselList.module.css'
 
 
-export default function CarouselList({gift}) {
+export default function CarouselList({idea}) {
     return (
         <>
-            <div>
-
-                {gift && gift.map((el) => <h1 className={style.item}> {el} </h1>)}
-
-
-            </div>
-
-
+          <IdeaCard idea={idea}/>
         </>
 
     )

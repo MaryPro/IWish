@@ -23,4 +23,4 @@ export default function IdeaList({ dispatch, ideas, res, setRes, category }) {
       </Row>
     </div>
   )
-}
+} 
