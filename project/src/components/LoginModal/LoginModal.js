@@ -1,7 +1,8 @@
-import { React, useState} from "react";
+import { React } from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
-import {useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 import IdeasBoard from "../IdeasBoard/IdeasBoard";
 import PersonalBoard from "../PersonalBoard/PersonalBoard";
@@ -10,6 +11,9 @@ import {render} from "@testing-library/react";
 
 //модалка
 function LoginModal({ show, setShow }) {
+
+  const history = useHistory()
+
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
 
@@ -30,8 +34,10 @@ function LoginModal({ show, setShow }) {
     setShow(false);
 
 
-
-
+    !resultLogin.currentUser.success && alert(resultLogin.currentUser.message)
+    // if (resultLogin.currentUser.success === false) { alert(resultLogin.currentUser.message) }
+    setShow(false);
+    history.push('/dashboard')
 
   }
   const handleClose = () => setShow(false);
@@ -56,7 +62,7 @@ function LoginModal({ show, setShow }) {
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Пароль</Form.Label>
-              <Form.Control  name="password" type="password" placeholder="Введите пароль" />
+              <Form.Control name="password" type="password" placeholder="Введите пароль" />
             </Form.Group>
             <Button variant="success" type="submit">
               Войти

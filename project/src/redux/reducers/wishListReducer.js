@@ -2,7 +2,7 @@ import { GET_WISH_LIST,  ADD_WISH_LIST, DELETE_WISH_LIST, GET_LAST_LIST } from '
 import {fetchGetWishListAC} from "../actionCreators";
 
 export function wishListReducer(state=[], action) {
-    console.log(action);
+
     switch (action.type) {
         // case GET_LAST_LIST:
         //     return []

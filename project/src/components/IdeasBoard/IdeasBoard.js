@@ -26,7 +26,7 @@ export default function IdeasBoard() {
   useEffect(() => {
     setCategory1(category)
   }, [category])
-console.log(category1);
+
   return (
     <>
       <Container>
