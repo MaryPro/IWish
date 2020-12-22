@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
@@ -8,9 +8,9 @@ import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 
 //модалка
 function LoginModal({ show, setShow }) {
-  const history = useHistory()
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
+  const [state, setState] = useState('')
 
   const subLog = (e) => {
     e.preventDefault();
@@ -23,18 +23,22 @@ function LoginModal({ show, setShow }) {
       }
     } = e.target
     dispatch(fetchUserLoginAC({ login, password }))
-    !resultLogin.currentUser.success && alert(resultLogin.currentUser.message)
-    // if (resultLogin.currentUser.success === false) { alert(resultLogin.currentUser.message) }
-    setShow(false);
-    history.push('/dashboard')
   }
+  useEffect(() => {
+    !resultLogin.currentUser.success ? setState(resultLogin.currentUser.message) :
+      setShow(false)
+  }, [resultLogin])
+
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <>
       <Modal show={show} onHide={handleClose}>
+
         <Modal.Header closeButton>
-          <Modal.Title>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
+
+          <Modal.Title>  <div>{state}</div>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
@@ -45,7 +49,7 @@ function LoginModal({ show, setShow }) {
               <Form.Text className="text-muted">
                 Мы уважаем право на сохранность личных данных и поэтому не собираем и не передаем
                 информацию о Вас третьим лицам.
-                        </Form.Text>
+            </Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
