@@ -6,11 +6,10 @@ import PersonalBoard from '../PersonalBoard/PersonalBoard'
 export default function UserPage() {
     return (
         <>
-         Ваши листы
-        <Container>
+           <Container>
           <PersonalBoard />
                         Ваши листы
-                        {/* <WishLists /> */}
+                        <WishLists />
         </Container>
         </>
     )

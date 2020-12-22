@@ -29,10 +29,10 @@ export default function WishLists() {
   useEffect(() => {
     console.log(userLog.currentUser.user._id);
     dispatch(fetchGetWishListAC(userLog.currentUser.user._id))
-  }, [])
+  }, [indepCount])
 
   const { wishlists } = useSelector(store => store)
-  console.log(wishlists);
+  // console.log(wishlists);
   return (
     <>
       <AddWishListForm indepCount={indepCount} setIndepCount={setIndepCount} />
