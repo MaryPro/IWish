@@ -5,6 +5,7 @@ import SignupModal from '../SignupModal/SignupModal'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import style from './NavBar.module.css'
+import { Link } from "react-router-dom";
 
 function NavBar() {
 
