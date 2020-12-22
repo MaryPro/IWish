@@ -36,4 +36,12 @@ router
   })
   .post(controllerUser.login);
 
+  router
+  .route('/upload')
+  .post(controllerUser.sendAvatar)
+
+  router
+   .route('/users')
+   .get(controllerUser.getUser)
+
 module.exports = router;

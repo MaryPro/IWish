@@ -63,4 +63,28 @@ module.exports.login = async function (req, res) {
   }
 }
 
+module.exports.sendAvatar = async function (req, res) {
+  const {id, avatar} = req.body
+  await User.findByIdAndUpdate(id, {avatar: avatar}, function(err, user){
 
+  res.status(200).json({
+    user,
+    success: true,
+    message: 'Успешно вошли!',
+    isAuth: true
+  })
+});
+}
+
+module.exports.getUser = async function (req, res) {
+  const {id} = req.query
+  try {
+      const user = await User.find({user: id});
+      if (user) {
+          return res.status(200).json(user)
+      }
+      return res.status(404).json('success: false')
+  } catch (e) {
+      res.send({ message: "Server error" })
+  }
+}

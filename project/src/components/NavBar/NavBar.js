@@ -4,6 +4,7 @@ import LoginModal from '../LoginModal/LoginModal'
 import SignupModal from '../SignupModal/SignupModal'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
+
 import style from './NavBar.module.css'
 const tempStore = require('store')
 

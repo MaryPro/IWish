@@ -1,7 +1,6 @@
 import {Alert} from "react-bootstrap"
-import React from 'react';
 import ImageUploader from 'react-images-upload';
-import {useEffect, useState, useContext} from 'react'
+import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchGetWishListAC, addListWishAC} from '../../redux/actionCreators'
 import AddWishListForm from '../AddWishListForm/AddWishListForm'
@@ -16,7 +15,7 @@ export default function WishLists() {
 
     const {wishlists} = useSelector(store => store)
 
-
+ 
     useEffect(() => {
         const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
         dispatch(fetchGetWishListAC(userID))

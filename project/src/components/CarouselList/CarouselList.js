@@ -3,7 +3,6 @@ import style from './CarouselList.module.css'
 
 
 export default function CarouselList({gift}) {
-    console.log(gift)
     return (
         <>
             <div>
