@@ -84,7 +84,6 @@ function NavBar() {
               <NavLink className="nav-link" to="/" onClick={() => logout}>Выйти</NavLink></li>}
             {userLog.isAuth && <li className="nav-item">
               <NavLink className="nav-link" to="/dashboard" >{userLog.currentUser.user.login}</NavLink></li>}
-
           </ul>
         </div>
       </nav>
