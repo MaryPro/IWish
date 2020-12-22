@@ -8,7 +8,7 @@ export default function IdeasBoard() {
     return (
         <>
         <Container>
-          <PersonalBoard />
+          {/* <PersonalBoard /> */}
                         Ваши листы
                         {/* <WishLists /> */}
         </Container>
