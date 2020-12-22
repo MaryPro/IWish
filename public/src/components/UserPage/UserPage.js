@@ -8,8 +8,8 @@ export default function UserPage() {
         <>
          Ваши листы
         <Container>
-          {/* <PersonalBoard /> */}
-                        {/* Ваши листы */}
+          <PersonalBoard />
+                        Ваши листы
                         {/* <WishLists /> */}
         </Container>
         </>

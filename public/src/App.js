@@ -31,8 +31,7 @@ function App() {
         </Route>
 
         <Route exact path='/dashboard'>
-          123
-          {/* <UserPage /> */}
+           <UserPage />
         </Route>
 
       
