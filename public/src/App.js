@@ -31,7 +31,6 @@ function App() {
         </Route>
 
         <Route path='/dashboard'>
-          {/* Личный кабинет */}
           <UserPage />
         </Route>
 

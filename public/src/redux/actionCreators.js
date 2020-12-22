@@ -25,18 +25,22 @@ export const fetchPostIdeaAC = (payload) => {
 }
 //
 export const fetchGetWishListAC = (payload) => {
+  console.log(payload);
   return dispatch => {
-    fetch(`/wishlists/?id=${payload}`,{
-      method: 'GET',
-          headers: {
-      'Content-type': 'application/json'
-    },
+    fetch(`/wishlists/?id=${payload}`)
+    // ,{
+    //   method: 'GET',
+    //       headers: {
+    //   'Content-type': 'application/json'
+    // },
     // body: JSON.stringify(payload)
-  })
+  // })
         .then(res => res.json())
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }
 };
+
+
 export const addListWishAC = (payload) => ({
   type: ADD_WISH_LIST,
       payload

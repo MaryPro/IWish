@@ -6,17 +6,17 @@ import AddWishListForm from '../AddWishListForm/AddWishListForm'
 import CarouselList from '../CarouselList/CarouselList'
 import ButtonDeleteList from "../ButtonDeleteList/ButtonDeleteList";
 import style from './WishLists.module.css'
+
 export default function WishLists() {
   const [indepCount, setIndepCount] = useState(0)
   const dispatch = useDispatch()
 
   const resultLogin = useSelector(store => store.user)
   const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '', _id:'' } }, isAuth: false })
-
  
   useEffect(() => {
     setLogUser(resultLogin)
-  }, [resultLogin]);
+   }, [resultLogin]);
 
   useEffect(() => {
     // const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
@@ -27,10 +27,12 @@ export default function WishLists() {
   }, [])
 
   useEffect(() => {
+    console.log(userLog.currentUser.user._id);
     dispatch(fetchGetWishListAC(userLog.currentUser.user._id))
-  }, [indepCount])
+  }, [])
 
   const { wishlists } = useSelector(store => store)
+  console.log(wishlists);
   return (
     <>
       <AddWishListForm indepCount={indepCount} setIndepCount={setIndepCount} />
