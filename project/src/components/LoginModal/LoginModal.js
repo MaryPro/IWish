@@ -27,7 +27,11 @@ function LoginModal({ show, setShow }) {
         value: password
       }
     } = e.target
-    dispatch(fetchUserLoginAC({ login, password }))
+    dispatch(fetchUserLoginAC({ login, password })
+        // .then(res => console.log(res))
+        // .then(answer => alert(answer.message))
+
+    )
 
 
     if (resultLogin.currentUser.success === false) {alert(resultLogin.currentUser.message)}

@@ -5,6 +5,7 @@ import SignupModal from '../SignupModal/SignupModal'
 import { useDispatch } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import style from './NavBar.module.css'
+const tempStore = require('store')
 
 function NavBar() {
 
@@ -25,8 +26,14 @@ function NavBar() {
   useEffect(() => {
     const user = localStorage.getItem('user')
 
+
+
     if (user) {
       setLogUser(JSON.parse(user))
+      console.log('!!!!')
+      console.log(user)
+      // tempStore.set('user', userLog.currentUser.user)
+      // console.log(tempStore.get('user'))
     };
   }, [userLog.isAuth])
 

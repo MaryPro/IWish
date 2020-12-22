@@ -9,18 +9,35 @@ import CarouselList from '../CarouselList/CarouselList'
 import ButtonDeleteList from "../ButtonDeleteList/ButtonDeleteList";
 import style from './WishLists.module.css'
 export default function WishLists() {
-
-
-
     const [indepCount, setIndepCount] = useState(0)
     const dispatch = useDispatch()
-    const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
+    // const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '', _id: '' } }, isAuth: false })
+
+    // useEffect(() => {
+    const {wishlists} = useSelector(store => store)
+
+    //
+    // useEffect(() => {
+    //     const user = localStorage.getItem('user')
+    //     if (user) {
+    //         setLogUser(JSON.parse(user))
+    //     };
+    // }, [])
+
 
     useEffect(() => {
+        const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
+        // const userID = userLog.currentUser.user._id
+        // console.log('>>>>>',userLog)
         dispatch(fetchGetWishListAC(userID))
+console.log(`++++++++${userID}`)
+    }, [])
 
-    }, [indepCount])
-    const {wishlists} = useSelector(store => store)
+
+    // const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
+    //     dispatch(fetchGetWishListAC(userID))
+    //
+    // }, [indepCount])
     return (
         <>
 
