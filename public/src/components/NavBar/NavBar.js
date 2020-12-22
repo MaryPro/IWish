@@ -55,7 +55,8 @@ function NavBar() {
               <LoginModal setShow={setShow} show={show} />
 
               {userLog.isAuth ? <Nav.Link className={style.link} href="/" onClick={() => logout()}>Выйти</Nav.Link> : null}
-              {userLog.isAuth ? <Nav.Link className={style.link} href="/dashboards/">{userLog.currentUser.user.login}</Nav.Link> : null}
+              {/* {userLog.isAuth ? <Nav.Link className={style.link} href="/dashboards/">{userLog.currentUser.user.login}</Nav.Link> : null} */}
+              {userLog.isAuth ? <Link className={style.link} to="/dashboard">{userLog.currentUser.user.login}</Link> : null}
 
             </Nav>
           </div>
