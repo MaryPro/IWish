@@ -10,7 +10,7 @@ export default function IdeasBoard() {
         <Container>
           <PersonalBoard />
                         Ваши листы
-                        <WishLists />
+                        {/* <WishLists /> */}
         </Container>
         </>
     )
