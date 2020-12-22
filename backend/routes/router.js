@@ -25,6 +25,9 @@ router
     res.send('ok from controller');
   })
   .post(controllerUser.registration);
+router
+    .route('/share')
+    .get(controllerWishList.getWishListShare)
 
 router
   .route('/login')

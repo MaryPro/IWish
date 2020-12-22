@@ -11,12 +11,7 @@ import {render} from "@testing-library/react";
 
 //модалка
 function LoginModal({ show, setShow }) {
-<<<<<<< HEAD
 
-  const history = useHistory()
-
-=======
->>>>>>> f1752477820c7ceab2a15f99911eea452a530d33
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
   const [state, setState] = useState('')
@@ -31,26 +26,9 @@ function LoginModal({ show, setShow }) {
         value: password
       }
     } = e.target
-<<<<<<< HEAD
-    dispatch(fetchUserLoginAC({ login, password })
-        // .then(res => console.log(res))
-        // .then(answer => alert(answer.message))
 
-    )
-
-
-    if (resultLogin.currentUser.success === false) {alert(resultLogin.currentUser.message)}
-    setShow(false);
-
-
-    !resultLogin.currentUser.success && alert(resultLogin.currentUser.message)
-    // if (resultLogin.currentUser.success === false) { alert(resultLogin.currentUser.message) }
-    setShow(false);
-    history.push('/dashboard')
-
-=======
     dispatch(fetchUserLoginAC({ login, password }))
->>>>>>> f1752477820c7ceab2a15f99911eea452a530d33
+
   }
   useEffect(() => {
     !resultLogin.currentUser.success ? setState(resultLogin.currentUser.message) :

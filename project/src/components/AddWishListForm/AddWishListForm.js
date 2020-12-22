@@ -11,7 +11,6 @@ function AddWishListForm({indepCount, setIndepCount}) {
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
-        console.log(userID)
         fetch('/wishlists', {
             method: 'POST',
             headers: {

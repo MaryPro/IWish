@@ -8,36 +8,20 @@ import AddWishListForm from '../AddWishListForm/AddWishListForm'
 import CarouselList from '../CarouselList/CarouselList'
 import ButtonDeleteList from "../ButtonDeleteList/ButtonDeleteList";
 import style from './WishLists.module.css'
+import ShareList from '../ShareList/ShareList'
+
 export default function WishLists() {
     const [indepCount, setIndepCount] = useState(0)
     const dispatch = useDispatch()
-    // const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '', _id: '' } }, isAuth: false })
 
-    // useEffect(() => {
     const {wishlists} = useSelector(store => store)
-
-    //
-    // useEffect(() => {
-    //     const user = localStorage.getItem('user')
-    //     if (user) {
-    //         setLogUser(JSON.parse(user))
-    //     };
-    // }, [])
 
 
     useEffect(() => {
         const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
-        // const userID = userLog.currentUser.user._id
-        // console.log('>>>>>',userLog)
         dispatch(fetchGetWishListAC(userID))
-console.log(`++++++++${userID}`)
-    }, [])
+    }, [indepCount])
 
-
-    // const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
-    //     dispatch(fetchGetWishListAC(userID))
-    //
-    // }, [indepCount])
     return (
         <>
 
@@ -46,6 +30,7 @@ console.log(`++++++++${userID}`)
 
                 <Alert variant='success' className={style.list} key={Math.random()}>
                     {wishlist.titleWish}
+                    <ShareList id={wishlist._id}/>
                     <ButtonDeleteList id={wishlist._id} indepCount={indepCount} setIndepCount={setIndepCount}/>
                 </Alert>
                 {wishlist.gifts !== undefined ? <CarouselList gift={wishlist && wishlist.gifts} key={Math.random()}/> :
