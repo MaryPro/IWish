@@ -1,6 +1,8 @@
+require('dotenv').config()
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require("jsonwebtoken")
+
 
 
 module.exports.registration = async function (req, res) {
@@ -12,23 +14,20 @@ module.exports.registration = async function (req, res) {
       email, login, password: hashedPassword
     })
     await user.save()
-    const token = jwt.sign({ id: user.id }, "secket-key", { expiresIn: "1h" })
-    // console.log('*+*+*+*+*+*+*')
-    // console.log(user)
-
-    // return res.status(201).json({ user })
+    const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
     return res.status(200).json({
       token,
       user,
       success: true,
-      message: 'Успешно вошли',
+      message: 'Успешно вошли!',
       isAuth: true
-
     })
 
   } catch {
-    console.log('что-то нетак')
-    res.status(403).json('Smth went wrong')
+    res.status(403).json({
+      success: false,
+      message: 'Такой логин или пароль уже заняты!',
+    })
   }
 }
 
@@ -47,20 +46,19 @@ module.exports.login = async function (req, res) {
     if (!isPassValid) {
       return res.status(404).json({
         success: false,
-        message: 'Неверный пароль'
+        message: 'Неверный пароль!'
       })
     }
-    const token = jwt.sign({ id: user.id }, "secket-key", { expiresIn: "1h" })
+    const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
     return res.status(200).json({
       token,
       user,
       success: true,
-      message: 'Успешно вошли',
+      message: 'Успешно вошли!',
       isAuth: true
 
     })
   } catch (e) {
-    console.log(e)
     res.send({ message: "Server error" })
   }
 }

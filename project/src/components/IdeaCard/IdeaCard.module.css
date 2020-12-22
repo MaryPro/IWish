@@ -1,5 +1,7 @@
 .card {
-  background-color: rgba(214, 173, 95, 0.4);
+  /* background-color: rgba(214, 173, 95, 0.4); */
+  background-color: #b6b89fa2;
+
   margin: 7px 5px;
   width: 250px;
   height: 300px;
