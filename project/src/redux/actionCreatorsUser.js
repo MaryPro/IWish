@@ -27,8 +27,7 @@ export const fetchUserLoginAC = (payload) => {
     })
       .then(res => res.json())
       .then(user => dispatch(loginUserAC(user)))
-    // .then(user  => (dispatch(loginUserAC(user)),  localStorage.setItem('token', user.token)))
-    // console.log(user.token)
+
   }
 };
 

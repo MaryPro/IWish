@@ -3,11 +3,13 @@ import { Form, Button, Modal } from 'react-bootstrap'
 import {useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
+import IdeasBoard from "../IdeasBoard/IdeasBoard";
+import PersonalBoard from "../PersonalBoard/PersonalBoard";
+import {render} from "@testing-library/react";
 
 
 //модалка
 function LoginModal({ show, setShow }) {
-  // const [show, setShow] = useState(false);
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
 
@@ -22,10 +24,15 @@ function LoginModal({ show, setShow }) {
       }
     } = e.target
     dispatch(fetchUserLoginAC({ login, password }))
+
+
     if (resultLogin.currentUser.success === false) {alert(resultLogin.currentUser.message)}
     setShow(false);
 
-    console.log(resultLogin.currentUser.success)
+
+
+
+
   }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

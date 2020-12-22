@@ -21,7 +21,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
             body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID})
         })
             .then(res => res.json())
-        setIndepCount(indepCount + 1)
+            .then(setIndepCount(indepCount + 1))
 
 
     }
