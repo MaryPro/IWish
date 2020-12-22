@@ -1,0 +1,17 @@
+.bar{
+  background-color: #b6b89fa2;
+  /* background-color: rgba(214, 173, 95, 0.4); */
+  width: 100%;
+}
+
+.div{
+display: flex;
+/* align-items: stretch; */
+justify-content: space-between;
+}
+
+
+
+Nav{
+  font-weight: bolder;
+}

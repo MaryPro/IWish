@@ -1,0 +1,47 @@
+.card {
+  /* background-color: rgba(214, 173, 95, 0.4); */
+  background-color: #b6b89fa2;
+
+  margin: 7px 5px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.rate {
+  position: absolute; 
+  bottom: 1.5rem;
+  left: 2rem;
+  z-index: 0;
+}
+
+.star {
+  position: relative; 
+}
+
+.description {
+  display: flex;
+}
+
+.titleGift{
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.ideaimg {
+  position: relative; 
+  margin-top: 15px;
+}
+
+.heart {
+  font-size: 30px;
+  color: #d4bbbb;
+  position: absolute; 
+  right: 10px;
+}
+
+.heart:hover {
+  color: #C80000;
+}
