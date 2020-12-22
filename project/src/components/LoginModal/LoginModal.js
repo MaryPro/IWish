@@ -4,10 +4,14 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
+import IdeasBoard from "../IdeasBoard/IdeasBoard";
+import PersonalBoard from "../PersonalBoard/PersonalBoard";
+import {render} from "@testing-library/react";
 
 
 //модалка
 function LoginModal({ show, setShow }) {
+
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
   const [state, setState] = useState('')
@@ -22,7 +26,9 @@ function LoginModal({ show, setShow }) {
         value: password
       }
     } = e.target
+
     dispatch(fetchUserLoginAC({ login, password }))
+
   }
   useEffect(() => {
     !resultLogin.currentUser.success ? setState(resultLogin.currentUser.message) :

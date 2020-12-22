@@ -40,6 +40,26 @@ module.exports.getWishList = async function (req, res) {
         res.send({ message: "Server error" })
     }
 }
+
+module.exports.getWishListShare = async function (req, res) {
+    const {id} = req.query
+    console.log(id)
+    try {
+        const goods = await WishList.find({_id: id});
+        if (goods) {
+            return res.status(200).json(goods)
+
+
+            //     success: false,
+            //     message: 'Списков нет'
+            // })
+        }
+        return res.status(404).json('success: false')
+    } catch (e) {
+        res.send({ message: "Server error" })
+    }
+}
+
 module.exports.deleteWishList = async function (req, res) {
     const { id } = req.body
     console.log(id)
