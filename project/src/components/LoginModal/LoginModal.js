@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
@@ -11,11 +11,15 @@ import {render} from "@testing-library/react";
 
 //модалка
 function LoginModal({ show, setShow }) {
+<<<<<<< HEAD
 
   const history = useHistory()
 
+=======
+>>>>>>> f1752477820c7ceab2a15f99911eea452a530d33
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
+  const [state, setState] = useState('')
 
   const subLog = (e) => {
     e.preventDefault();
@@ -27,6 +31,7 @@ function LoginModal({ show, setShow }) {
         value: password
       }
     } = e.target
+<<<<<<< HEAD
     dispatch(fetchUserLoginAC({ login, password })
         // .then(res => console.log(res))
         // .then(answer => alert(answer.message))
@@ -43,14 +48,25 @@ function LoginModal({ show, setShow }) {
     setShow(false);
     history.push('/dashboard')
 
+=======
+    dispatch(fetchUserLoginAC({ login, password }))
+>>>>>>> f1752477820c7ceab2a15f99911eea452a530d33
   }
+  useEffect(() => {
+    !resultLogin.currentUser.success ? setState(resultLogin.currentUser.message) :
+      setShow(false)
+  }, [resultLogin])
+
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <>
       <Modal show={show} onHide={handleClose}>
+
         <Modal.Header closeButton>
-          <Modal.Title>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
+
+          <Modal.Title>  <div>{state}</div>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
@@ -61,7 +77,7 @@ function LoginModal({ show, setShow }) {
               <Form.Text className="text-muted">
                 Мы уважаем право на сохранность личных данных и поэтому не собираем и не передаем
                 информацию о Вас третьим лицам.
-                        </Form.Text>
+            </Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">

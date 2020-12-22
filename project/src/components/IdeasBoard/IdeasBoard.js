@@ -5,6 +5,7 @@ import NavFilter from '../NavFilter/NavFilter'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { fetchGetIdeasAC } from '../../redux/actionCreators'
+import style from './IdeasBoard.module.css'
 
 export default function IdeasBoard() {
   //нужно передать в category категорию на русском
@@ -30,7 +31,7 @@ export default function IdeasBoard() {
   return (
     <>
       <Container>
-        <Row>
+        <Row className={style.row}>
           <Col md={3}>
             <NavFilter dispatch={dispatch} ideas={ideas} res={res} setRes={setRes} category1={category1} setCategory1={setCategory1}/>
           </Col>
