@@ -13,6 +13,19 @@ module.exports.registration = async function (req, res) {
     const user = new User({
       email, login, password: hashedPassword
     })
+    if (!login) {
+      return res.status(404).json({
+        success: false,
+        message: 'Введите логин!'
+      })
+    }
+    if (!password) {
+      return res.status(404).json({
+        success: false,
+        message: 'Введите пароль!'
+      })
+    }
+
     await user.save()
     const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
     return res.status(200).json({
@@ -40,7 +53,7 @@ module.exports.registration = async function (req, res) {
     //     message: 'Введите пароль!',
     //   })
     // }
-     return res.status(403).json({
+    return res.status(403).json({
       success: false,
       message: 'Повторите регистрацию!',
     })
