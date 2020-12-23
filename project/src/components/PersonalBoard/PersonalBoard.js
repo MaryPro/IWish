@@ -4,13 +4,14 @@ import Informer from '../Informer/Informer'
 import style from './PersonalBoard.module.css'
 import SendAvatar from './SendAvatar/SendAvatar'
 
-export default function PersonalBoard() {
+export default function PersonalBoard({count, setCount}) {
   const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '' } }, isAuth: false })
+  // const [count, setCount] = useState(0)
 
   useEffect(() => {
     const user = localStorage.getItem('user')
       user && setLogUser(JSON.parse(user))
-  }, [])
+  }, [count])
 
   return (
     <div >
@@ -32,7 +33,7 @@ export default function PersonalBoard() {
         </Col>
       </Row>
       <Row>
-        <SendAvatar currUser={userLog.currentUser.user} />
+        <SendAvatar currUser={userLog.currentUser.user} count={count} setCount={setCount}/>
       </Row>
     </div>
   )

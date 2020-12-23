@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './ButtonDeleteList.module.css'
 
-export default function ButtonDeleteList({id, indepCount, setIndepCount}) {
+export default function ButtonDeleteList({id, count, setCount}) {
 
 
     return (
@@ -17,7 +17,7 @@ export default function ButtonDeleteList({id, indepCount, setIndepCount}) {
                 })
                     .then(res => res.json())
                     .then(mes => alert(mes.message))
-                    .then(setIndepCount(indepCount + 1))
+                    .then(setCount(count + 1))
             }>удалить список
             </div>
 
