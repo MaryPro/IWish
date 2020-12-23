@@ -12,6 +12,7 @@ require('./config/passport')(passport)
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.i7upe.mongodb.net/Iwish?retryWrites=true&w=majority`, {
   useUnifiedTopology: true,
   useNewUrlParser: true
