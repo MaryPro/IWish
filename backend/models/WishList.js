@@ -3,11 +3,11 @@ const Schema = mongoose.Schema
 
 const wishListSchema = new Schema({
     titleWish: { type: String, required: true },
-    gifts: [],
-    //     {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Good'
-    // },
+    gifts: [
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Good'
+    }],
     user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

@@ -1,5 +1,6 @@
 const WishList = require('../models/WishList')
 const User = require('../models/User')
+const Good = require('../models/Good')
 module.exports.addWishListToBase  = async function(req, res) {
     try {
         const { inputText, gifts, userID} = req.body
@@ -46,9 +47,9 @@ module.exports.getWishListShare = async function (req, res) {
     try {
         const goods = await WishList.find({_id: id});
         const userNickname = await User.find({_id: user})
-
-        if (goods && userNickname) {
-            return res.status(200).json({goods, userNickname})
+        const giftsList = await WishList.find({_id: id}).populate('gifts')
+        if (goods && userNickname && giftsList) {
+            return res.status(200).json({goods, userNickname, giftsList})
 
         }
         return res.status(404).json('success: false')

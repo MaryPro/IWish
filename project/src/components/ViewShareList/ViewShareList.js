@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import IdeaCard from '../IdeaCard/IdeaCard'
 function ViewShareList(){
     const {id, user} = useParams()
     const [state, setState] = useState()
@@ -14,7 +15,7 @@ useEffect(() =>
     })
         .then(res => res.json())
         .then(info => setState(info))
-        .then(console.log(state && state))
+        // .then(console.log(state && state.giftsList[0].gifts))
 
     ,[]
 
@@ -26,8 +27,8 @@ useEffect(() =>
                 <br></br>
                 <br>
         </br>
-                <h1>В желаниях: {state && state.goods[0].gifts}</h1>
-
+                <h1>В желаниях: {state && state.giftsList[0].gifts.map(el => el.titleGift)}</h1>
+                {state && state.giftsList[0].gifts.map(el => <IdeaCard idea ={el}/>)}
             </h1>
             </>
     )
