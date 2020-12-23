@@ -2,7 +2,7 @@ require('dotenv').config()
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require("jsonwebtoken")
-const passport=require('passport')
+const passport = require('passport')
 
 
 module.exports.registration = async function (req, res) {
@@ -15,7 +15,12 @@ module.exports.registration = async function (req, res) {
     })
     await user.save()
     const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
-    return res.status(200).json({
+    if (password == undefined) {
+      return res.status(400).json({
+        success: false,
+        message: 'Введите пароль!',
+      })
+    }else return res.status(200).json({
       token,
       user,
       success: true,
@@ -26,7 +31,7 @@ module.exports.registration = async function (req, res) {
   } catch {
     res.status(403).json({
       success: false,
-      message: 'Такой логин или пароль уже заняты!',
+      message: 'Повторите регистрацию!',
     })
   }
 }
