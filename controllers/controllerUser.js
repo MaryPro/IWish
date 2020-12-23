@@ -4,6 +4,7 @@ const User = require('../models/User');
 const jwt = require("jsonwebtoken")
 const passport = require('passport')
 
+
 module.exports.registration = async function (req, res) {
   try {
     const { login, password, email } = req.body
