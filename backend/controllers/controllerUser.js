@@ -125,6 +125,15 @@ module.exports.login = async function (req, res) {
   }
 }
 
+module.exports.sendAvatar = async function (req, res) {
+  const {id, avatar} = req.body
+  await User.findByIdAndUpdate(id, {avatar: avatar}, function(err, user){
 
-
-
+  res.status(200).json({
+    user,
+    success: true,
+    message: 'Успешно вошли!',
+    isAuth: true
+  })
+});
+}

@@ -43,4 +43,9 @@ router
     .route('/saveidea')
     .post(controllerWishList.saveidea)
 
+router
+  .route('/upload')
+  .post(controllerUser.sendAvatar)
+
+
 module.exports = router;

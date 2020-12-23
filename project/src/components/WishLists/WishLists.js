@@ -9,8 +9,8 @@ import CarouselList from '../CarouselList/CarouselList'
 import style from './WishLists.module.css'
 import IdeaCard from "../IdeaCard/IdeaCard";
 
-export default function WishLists() {
-    const [indepCount, setIndepCount] = useState(0)
+export default function WishLists({count, setCount}) {
+    // const [indepCount, setIndepCount] = useState(0)
     const dispatch = useDispatch()
  
     const {wishlists} = useSelector(store => store)
@@ -19,15 +19,15 @@ export default function WishLists() {
     useEffect(() => {
         const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
         dispatch(fetchGetWishListAC(userID))
-    }, [indepCount])
+    }, [count])
 
     return (
         <> 
         <Row>
-            <AddWishListForm indepCount={indepCount} setIndepCount={setIndepCount}/>
+            <AddWishListForm count={count} setCount={setCount}/>
         </Row>
         {wishlists && wishlists.map((wishlist) => 
-            <CarouselList wishlist={wishlist} indepCount={indepCount} setIndepCount={setIndepCount}/>
+            <CarouselList wishlist={wishlist} count={count} setCount={setCount}/>
             )}
            
         </>
