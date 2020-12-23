@@ -10,7 +10,7 @@ import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
 function LoginModal({ show, setShow }) {
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
-  const [state, setState] = useState('')
+  const [state, setState] = useState('Пожалуйста, введите имя пользователя и пароль')
 
   const subLog = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ function LoginModal({ show, setShow }) {
 
         <Modal.Header closeButton>
 
-          <Modal.Title>  <div>{state}</div>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
+          <Modal.Title>{state}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 

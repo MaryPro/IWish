@@ -8,7 +8,7 @@ import { fetchUserRegAC } from "../../redux/actionCreatorsUser";
 function SignupModal({ show, setShow }) {
   const dispatch = useDispatch();
   const resultSignup = useSelector(store => store.user)
-  const [state, setState] = useState('')
+  const [state, setState] = useState('Пожалуйста, введите имя пользователя, почту и пароль')
 
   const subReg = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ function SignupModal({ show, setShow }) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><div>{state}</div>Пожалуйста, введите имя пользователя, почту и пароль</Modal.Title>
+          <Modal.Title>{state}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
