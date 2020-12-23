@@ -14,13 +14,19 @@ module.exports.registration = async function (req, res) {
       email, login, password: hashedPassword
     })
     if (!login) {
-      return res.status(404).json({
+      return res.status(403).json({
         success: false,
         message: 'Введите логин!'
       })
     }
+    if (!email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите почту!'
+      })
+    }
     if (!password) {
-      return res.status(404).json({
+      return res.status(403).json({
         success: false,
         message: 'Введите пароль!'
       })
@@ -37,25 +43,9 @@ module.exports.registration = async function (req, res) {
     })
 
   } catch {
-    // if (login == undefined) {
-    //   return res.status(403).json({
-    //     success: false,
-    //     message: 'Введите логин!',
-    //   })
-    // } else if (email == undefined) {
-    //   return res.status(403).json({
-    //     success: false,
-    //     message: 'Введите почту!',
-    //   })
-    // } else if (password == undefined) {
-    //   return res.status(403).json({
-    //     success: false,
-    //     message: 'Введите пароль!',
-    //   })
-    // }
-    return res.status(403).json({
+     return res.status(403).json({
       success: false,
-      message: 'Повторите регистрацию!',
+      message: 'Такой логин или почта уже используютя!',
     })
   }
 }
