@@ -14,7 +14,7 @@ useEffect(() =>
     })
         .then(res => res.json())
         .then(info => setState(info))
-        // .then(console.log(state && state[0].titleWish, state && state[1].login))
+        .then(console.log(state && state))
 
     ,[]
 
@@ -23,6 +23,10 @@ useEffect(() =>
         <>
             <h1>
                 Список желаний: <h1>{state && state.goods[0].titleWish}</h1> пользователя: <h1>{state && state.userNickname[0].login}</h1>
+                <br></br>
+                <br>
+        </br>
+                <h1>В желаниях: {state && state.goods[0].gifts}</h1>
 
             </h1>
             </>
