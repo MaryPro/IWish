@@ -43,6 +43,8 @@ function NavBar() {
           <ul className="navbar-nav right hide-on-med-and-down">
             <li className="nav-item">
               <NavLink className="navbar-brand" to="/">IWish</NavLink></li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/ideas/Все%20категории">Все идеи</NavLink></li>
             {!userLog.isAuth && <li className="nav-item">
               <NavLink className="nav-link" to="/" onClick={signupVisible}>Регистрация</NavLink></li>}
             <SignupModal setShow={setShowSignup} show={showSignup} />

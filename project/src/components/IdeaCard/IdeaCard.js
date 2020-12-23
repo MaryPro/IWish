@@ -1,25 +1,37 @@
-import React from 'react'
-import { Col, Dropdown } from 'react-bootstrap'
+import React, {useState, useEffect} from 'react'
+import { Col, Dropdown, FormControl } from 'react-bootstrap'
 import Star from './Star/Star'
 import style from './IdeaCard.module.css'
 import { Link } from 'react-router-dom'
-
-export default function IdeaCard({ idea, wishlists }) {
+import AddWishListForm from '../AddWishListForm/AddWishListForm'
+export default function IdeaCard({ idea, wishlists, res, setRes, }) {
+  const [thisIdea, setThisIdea] = useState(idea)
+  const [count, setCount] = useState(0)
+ let star = 0
   const saveIdea = (e) => {
     e.preventDefault()
+    setCount(count +1)
     const wishListTitle = e.target.innerText;
-
+    
     fetch('/saveidea', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ wishListTitle, idea })
     })
+    .then(res => res.json())
+    .then(ok => console.log(ok))
+
+
+    fetch('/changeRate', {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({thisIdea})
+    })
       .then(res => res.json())
-      .then(ok => console.log(ok))
+      .then(updIdea => setThisIdea(updIdea))
   }
 
-
-
+    console.log(thisIdea);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -36,6 +48,10 @@ export default function IdeaCard({ idea, wishlists }) {
   ));
 
   return (
+      <>
+
+
+
     <div className={style.card}>
       <Col>
 
@@ -46,12 +62,13 @@ export default function IdeaCard({ idea, wishlists }) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu >
+   
               {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()}>
                 <Link to='/dashboard' onClick={saveIdea}>{list.titleWish}</Link>
               </Dropdown.Item>
               )}
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="2">Создать новый список</Dropdown.Item>
+              {/* <Dropdown.Divider /> */}
+              
             </Dropdown.Menu>
 
           </Dropdown>
@@ -60,12 +77,13 @@ export default function IdeaCard({ idea, wishlists }) {
         </div>
 
         <div className={style.description}>
-          <Star idea={idea} />
+          <Star thisIdea={thisIdea} />
           <div className={style.titleGift}>
             {idea.titleGift}
           </div>
         </div>
       </Col>
     </div>
+    </>
   )
 }
