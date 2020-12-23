@@ -44,8 +44,8 @@ function LoginModal({ show, setShow }) {
 
         <Modal.Header closeButton>
 
-          <Modal.Title>  <div>{state}</div>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
-        </Modal.Header>
+        <Modal.Title>{state}</Modal.Title>
+             </Modal.Header>
         <Modal.Body>
 
           <Form onSubmit={subLog}>
