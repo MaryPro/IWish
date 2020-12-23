@@ -12,7 +12,7 @@ export const fetchGetIdeasAC = () => {
 
 export const fetchPostIdeaAC = (payload) => {
   return dispatch => {
-    fetch(' http://localhost:3001/addidea', {
+    fetch('/addidea', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -37,6 +37,11 @@ export const fetchGetWishListAC = (payload) => {
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }
 };
+
+
+
+
+
 export const addListWishAC = (payload) => ({
   type: ADD_WISH_LIST,
       payload

@@ -36,7 +36,7 @@ function SignupModal({ show, setShow }) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><div>{state}</div>Пожалуйста, введите имя пользователя, почту и пароль</Modal.Title>
+          <Modal.Title>{state}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
