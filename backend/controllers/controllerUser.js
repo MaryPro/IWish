@@ -2,8 +2,7 @@ require('dotenv').config()
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require("jsonwebtoken")
-
-
+const passport = require('passport')
 
 module.exports.registration = async function (req, res) {
   try {
@@ -13,6 +12,50 @@ module.exports.registration = async function (req, res) {
     const user = new User({
       email, login, password: hashedPassword
     })
+
+    if (!login && !email && !password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин, почту и пароль!'
+      })
+    }
+    if (!login && !password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и пароль!'
+      })
+    }
+    if (!login && !email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и почту!'
+      })
+    }
+    if (!password && !email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите почту и пароль!'
+      })
+    }
+    if (!login) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин!'
+      })
+    }
+    if (!email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите почту!'
+      })
+    }
+    if (!password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите пароль!'
+      })
+    }
+
     await user.save()
     const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
     return res.status(200).json({
@@ -24,9 +67,9 @@ module.exports.registration = async function (req, res) {
     })
 
   } catch {
-    res.status(403).json({
+    return res.status(403).json({
       success: false,
-      message: 'Такой логин или пароль уже заняты!',
+      message: 'Такой логин или почта уже используютя!',
     })
   }
 }
@@ -36,6 +79,25 @@ module.exports.login = async function (req, res) {
   try {
     const { login, password } = req.body
     const user = await User.findOne({ login })
+
+        if (!login && !password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и пароль!'
+      })
+    }
+    if (!login) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин!'
+      })
+    }
+    if (!password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите пароль!'
+      })
+    }
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -62,5 +124,7 @@ module.exports.login = async function (req, res) {
     res.send({ message: "Server error" })
   }
 }
+
+
 
 
