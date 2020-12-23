@@ -24,22 +24,23 @@ module.exports.registration = async function (req, res) {
     })
 
   } catch {
-    if (login == undefined) {
-      return res.status(403).json({
-        success: false,
-        message: 'Введите логин!',
-      })
-    } else if (email == undefined) {
-      return res.status(403).json({
-        success: false,
-        message: 'Введите почту!',
-      })
-    } else if (password == undefined) {
-      return res.status(403).json({
-        success: false,
-        message: 'Введите пароль!',
-      })
-    } else return res.status(403).json({
+    // if (login == undefined) {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: 'Введите логин!',
+    //   })
+    // } else if (email == undefined) {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: 'Введите почту!',
+    //   })
+    // } else if (password == undefined) {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: 'Введите пароль!',
+    //   })
+    // }
+     return res.status(403).json({
       success: false,
       message: 'Повторите регистрацию!',
     })
