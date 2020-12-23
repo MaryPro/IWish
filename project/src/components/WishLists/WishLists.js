@@ -30,7 +30,7 @@ export default function WishLists() {
 
                 <Alert variant='success' className={style.list} key={Math.random()}>
                     {wishlist.titleWish}
-                    <ShareList id={wishlist._id}/>
+                    <ShareList id={wishlist._id} user={wishlist.user}/>
                     <ButtonDeleteList id={wishlist._id} indepCount={indepCount} setIndepCount={setIndepCount}/>
                 </Alert>
                 {wishlist.gifts !== undefined ? <CarouselList gift={wishlist && wishlist.gifts} key={Math.random()}/> :

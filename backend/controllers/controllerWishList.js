@@ -1,5 +1,5 @@
 const WishList = require('../models/WishList')
-
+const User = require('../models/User')
 module.exports.addWishListToBase  = async function(req, res) {
     try {
         const { inputText, gifts, userID} = req.body
@@ -42,17 +42,14 @@ module.exports.getWishList = async function (req, res) {
 }
 
 module.exports.getWishListShare = async function (req, res) {
-    const {id} = req.query
-    console.log(id)
+    const {id, user} = req.query
     try {
         const goods = await WishList.find({_id: id});
-        if (goods) {
-            return res.status(200).json(goods)
+        const userNickname = await User.find({_id: user})
 
+        if (goods && userNickname) {
+            return res.status(200).json({goods, userNickname})
 
-            //     success: false,
-            //     message: 'Списков нет'
-            // })
         }
         return res.status(404).json('success: false')
     } catch (e) {
@@ -68,7 +65,7 @@ module.exports.deleteWishList = async function (req, res) {
         if (!goods) {
             return res.status(404).json({
                 success: false,
-                message: 'Ошибка удадления'
+                message: 'Ошибка удаления'
             })
         }
         return res.status(200).json({success: true, message: "Список удален"})

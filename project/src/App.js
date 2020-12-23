@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar/NavBar"
 import IdeasBoard from './components/IdeasBoard/IdeasBoard'
 import CategoryList from './components/CategoryList/CategoryList'
 import UserPage from './components/UserPage/UserPage'
-
+import ViewShareList from './components/ViewShareList/ViewShareList'
 
 function App() {
 
@@ -29,7 +29,9 @@ function App() {
         <Route path='/ideas/:category'>
           <IdeasBoard />
         </Route>
-
+        <Route path="/share/:id/:user">
+          <ViewShareList />
+        </Route>
         <Route path='/dashboard/'>
           {/* Личный кабинет */}
           <UserPage />

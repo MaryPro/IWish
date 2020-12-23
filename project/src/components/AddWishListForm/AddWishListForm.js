@@ -11,6 +11,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
+        setIndepCount(indepCount + 1)
         fetch('/wishlists', {
             method: 'POST',
             headers: {
@@ -19,7 +20,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
             body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID})
         })
             .then(res => res.json())
-            .then(setIndepCount(indepCount + 1))
+            // .then(setIndepCount(indepCount + 1))
 
 
     }
