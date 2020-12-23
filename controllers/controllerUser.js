@@ -15,12 +15,7 @@ module.exports.registration = async function (req, res) {
     })
     await user.save()
     const token = jwt.sign({ id: user.id }, process.env.KEY, { expiresIn: "1h" })
-    if (password == undefined) {
-      return res.status(400).json({
-        success: false,
-        message: 'Введите пароль!',
-      })
-    }else return res.status(200).json({
+    return res.status(200).json({
       token,
       user,
       success: true,
@@ -29,7 +24,22 @@ module.exports.registration = async function (req, res) {
     })
 
   } catch {
-    res.status(403).json({
+    if (login == undefined) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин!',
+      })
+    } else if (email == undefined) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите почту!',
+      })
+    } else if (password == undefined) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите пароль!',
+      })
+    } else return res.status(403).json({
       success: false,
       message: 'Повторите регистрацию!',
     })
