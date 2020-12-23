@@ -18,6 +18,7 @@ export default function PersonalBoard() {
     const userLoc = localStorage.getItem('user')
     userLoc && setLogUser(JSON.parse(userLoc))
     const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
+   
     dispatch(fetchGetUserAC(userID))
   }, [indepCount])
 

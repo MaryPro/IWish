@@ -26,13 +26,7 @@ export const fetchPostIdeaAC = (payload) => {
 //
 export const fetchGetWishListAC = (payload) => {
   return dispatch => {
-    fetch(`/wishlists/?id=${payload}`,{
-      method: 'GET',
-          headers: {
-      'Content-type': 'application/json'
-    },
-    // body: JSON.stringify(payload)
-  })
+    fetch(`/wishlists/?id=${payload}`)
         .then(res => res.json())
         .then(wishlists => dispatch(getWishListAC(wishlists)))
   }

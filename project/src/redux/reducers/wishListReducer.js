@@ -1,5 +1,4 @@
 import { GET_WISH_LIST,  ADD_WISH_LIST, DELETE_WISH_LIST, GET_LAST_LIST } from '../actionTypes'
-import {fetchGetWishListAC} from "../actionCreators";
 
 export function wishListReducer(state=[], action) {
 

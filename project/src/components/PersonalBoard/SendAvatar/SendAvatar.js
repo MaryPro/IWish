@@ -38,7 +38,7 @@ export default function SendAvatar({ currUser, indepCount, setIndepCount}) {
             </Card.Header>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
-                <form enctype="multipart/form-data" method="POST" onSubmit={sendFoto} name="fileinfo">
+                <form encType="multipart/form-data" method="POST" onSubmit={sendFoto} name="fileinfo">
                   <div style={{ display: 'flex' }}>
                     <input type='file' name='file' id="file" />
                     <button>Загрузить</button>
