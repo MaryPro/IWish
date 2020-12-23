@@ -23,13 +23,14 @@ export default function WishLists({count, setCount}) {
 
     return (
         <> 
-        <Row>
+       
             <AddWishListForm count={count} setCount={setCount}/>
-        </Row>
+        
         {wishlists && wishlists.map((wishlist) => 
+         
             <CarouselList wishlist={wishlist} count={count} setCount={setCount}/>
+        
             )}
-           
         </>
     )
 }

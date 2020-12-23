@@ -18,7 +18,7 @@ export default function IdeasBoard() {
   useEffect(() => {
     dispatch(fetchGetIdeasAC())
   }, [])
-
+ 
   useEffect(() => {
     setRes(() => ideas)
     }, [ideas])

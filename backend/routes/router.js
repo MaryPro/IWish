@@ -47,5 +47,8 @@ router
   .route('/upload')
   .post(controllerUser.sendAvatar)
 
+  router
+    .route('/changeRate')
+    .post(controllerGoods.putRate)
 
 module.exports = router;

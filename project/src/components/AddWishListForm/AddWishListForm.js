@@ -7,7 +7,7 @@ function AddWishListForm({count, setCount}) {
     const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
 
     const [inputText, setInputText] = useState(null)
-    const gifts = 'aaaa'
+    
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
@@ -17,7 +17,7 @@ function AddWishListForm({count, setCount}) {
             headers: {
                 'Content-type': 'Application/json',
             },
-            body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID})
+            body: JSON.stringify({inputText: inputText,  userID: userID})
         })
             .then(res => res.json())
             // .then(setIndepCount(indepCount + 1))
