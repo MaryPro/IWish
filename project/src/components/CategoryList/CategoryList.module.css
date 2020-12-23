@@ -40,7 +40,7 @@
   margin: 20px 0;
 }
 
-img:hover{
+.img:hover{
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
