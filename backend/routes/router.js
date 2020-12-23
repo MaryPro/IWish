@@ -39,4 +39,8 @@ router
   })
   .post(controllerUser.login);
 
+  router
+    .route('/saveidea')
+    .post(controllerWishList.saveidea)
+
 module.exports = router;
