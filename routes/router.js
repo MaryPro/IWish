@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const jwt = require("jsonwebtoken")
+const passport=require('passport')
 const controllerUser = require('../controllers/controllerUser');
 const controllerGoods = require('../controllers/controllerGoods');
 const controllerWishList = require('../controllers/controllerWishList')
@@ -11,14 +12,15 @@ router
   .get(controllerGoods.gets);
 
 router
-  .route('/addidea')
+  .route('/addidea', passport.authenticate('jwt',{session:false}))
   .post(controllerGoods.addidea);
 
 router
-    .route('/wishlists')
+    .route('/wishlists', passport.authenticate('jwt',{session:false}))
     .post(controllerWishList.addWishListToBase)
     .get(controllerWishList.getWishList)
     .delete(controllerWishList.deleteWishList)
+
 router
   .route('/registration')
   .get((req, res) => {

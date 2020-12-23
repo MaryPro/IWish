@@ -37,37 +37,7 @@ function NavBar() {
 
 
   return (
-    // <div style={style}>
-    //   <div className={style.div}>
-
-    //     <Navbar className={`${style.bar} fixed-top`} variant="dark">
-    //       <div >
-    //         <Navbar.Brand href="/">IWish</Navbar.Brand>
-    //       </div>
-    //       <div >
-    //         <Nav>
-
-    //           {/* <Nav.Link href="/">Главная</Nav.Link> */}
-    //           {!userLog.isAuth ?
-    //             <Nav.Link className={style.link} onClick={signupVisible}>Регистрация</Nav.Link> : null}
-    //           <SignupModal setShow={setShowSignup} show={showSignup} />
-    //           {!userLog.isAuth ?
-    //             <Nav.Link className={style.link} onClick={visibleModal}>Войти</Nav.Link> : null}
-    //           <LoginModal setShow={setShow} show={show} />
-
-    //           {userLog.isAuth ? <Nav.Link className={style.link} href="/" onClick={() => logout()}>Выйти</Nav.Link> : null}
-    //           {/* {userLog.isAuth ? <Nav.Link className={style.link} href="/dashboards/">{userLog.currentUser.user.login}</Nav.Link> : null} */}
-    //           {userLog.isAuth ? <Link className={style.link} to="/dashboard">{userLog.currentUser.user.login}</Link> : null}
-
-    //         </Nav>
-    //       </div>
-    //     </Navbar>
-    //   </div>
-    // </div>
-
-
-
-    <div>
+      <div>
       <nav className={`navbar navbar-expand-lg navbar-light navbar-dark  fixed-top ${style.bar}`}>
         <div className="nav-wrapper">
           <ul className="navbar-nav right hide-on-med-and-down">
@@ -79,7 +49,6 @@ function NavBar() {
             {!userLog.isAuth && <li className="nav-item">
               <NavLink className="nav-link" to="/" onClick={visibleModal}>Войти</NavLink></li>}
             <LoginModal setShow={setShow} show={show} />
-
             {userLog.isAuth && <li className="nav-item">
               <NavLink className="nav-link" to="/" onClick={logout}>Выйти</NavLink></li>}
             {userLog.isAuth && <li className="nav-item">
@@ -88,7 +57,6 @@ function NavBar() {
         </div>
       </nav>
     </div >
-
   )
 
 }

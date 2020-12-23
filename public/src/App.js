@@ -30,7 +30,7 @@ function App() {
           <IdeasBoard />
         </Route>
 
-        <Route exact path='/dashboard'>
+        <Route path='/dashboard'>
            <UserPage />
         </Route>
 

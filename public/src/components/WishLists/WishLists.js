@@ -10,7 +10,6 @@ import style from './WishLists.module.css'
 export default function WishLists() {
   const [indepCount, setIndepCount] = useState(0)
   const dispatch = useDispatch()
-
   const resultLogin = useSelector(store => store.user)
   const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '', _id:'' } }, isAuth: false })
  
@@ -19,7 +18,6 @@ export default function WishLists() {
    }, [resultLogin]);
 
   useEffect(() => {
-    // const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
     const user = localStorage.getItem('user')
     if (user) {
       setLogUser(JSON.parse(user))
@@ -27,12 +25,10 @@ export default function WishLists() {
   }, [])
 
   useEffect(() => {
-    console.log(userLog.currentUser.user._id);
-    dispatch(fetchGetWishListAC(userLog.currentUser.user._id))
+     dispatch(fetchGetWishListAC(userLog.currentUser.user._id))
   }, [indepCount])
 
   const { wishlists } = useSelector(store => store)
-  // console.log(wishlists);
   return (
     <>
       <AddWishListForm indepCount={indepCount} setIndepCount={setIndepCount} />
@@ -52,4 +48,3 @@ export default function WishLists() {
 
   )
 }
-
