@@ -13,6 +13,24 @@ module.exports.registration = async function (req, res) {
     const user = new User({
       email, login, password: hashedPassword
     })
+    if (!login && !password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и пароль!'
+      })
+    }
+    if (!login && !email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и почту!'
+      })
+    }
+    if (!password && !email) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите почту и пароль!'
+      })
+    }
     if (!login) {
       return res.status(403).json({
         success: false,
@@ -55,6 +73,24 @@ module.exports.login = async function (req, res) {
   try {
     const { login, password } = req.body
     const user = await User.findOne({ login })
+    if (!login && !password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин и пароль!'
+      })
+    }
+    if (!login) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите логин!'
+      })
+    }
+     if (!password) {
+      return res.status(403).json({
+        success: false,
+        message: 'Введите пароль!'
+      })
+    }
     if (!user) {
       return res.status(404).json({
         success: false,
