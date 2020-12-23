@@ -73,3 +73,12 @@ module.exports.deleteWishList = async function (req, res) {
         res.send({ message: "Server error" })
     }
 }
+
+module.exports.saveidea = async function (req,res) {
+  const  {wishListTitle, idea} = req.body
+  const old = await WishList.findOne({titleWish: wishListTitle})
+  old.gifts.push(idea)
+  await WishList.findOneAndUpdate({titleWish: wishListTitle}, {gifts: old.gifts}, function(err, wList){
+   res.json('okey its back')
+  });
+}

@@ -6,7 +6,8 @@ const userSchema = new Schema({
   login: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   regDate: { type: Date, default: Date.now },
-  wishlists: []
+  wishlists: [],
+  avatar: {type: String, default: 'https://bestlivingjapan.com/wp-content/uploads/2019/11/Roppongi-Hills-Santa.jpg'}
 })
 
 module.exports = mongoose.model('User', userSchema)
