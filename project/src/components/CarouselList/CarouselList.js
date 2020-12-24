@@ -18,8 +18,8 @@ export default function CarouselList({ wishlist, count, setCount }) {
           <Col md={6}>
             <p>{wishlist.titleWish}</p>
           </Col>
-          <Col md={{offset:3}}>
-            <ShareList id={wishlist._id} user={wishlist.user} />
+          <Col md={{offset:3, span: 2}}>
+            <ShareList id={wishlist._id} user={wishlist.user} title={wishlist.titleWish}/>
             <ButtonDeleteList id={wishlist._id} count={count} setCount={setCount} />
           </Col>
 

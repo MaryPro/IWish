@@ -6,7 +6,7 @@ export default function ButtonDeleteList({id, count, setCount}) {
 
     return (
         <>
-            <div className={style.button} type="submit" id={id} onClick={() =>
+            <div title="Удалить список" className={style.button} type="submit" id={id} onClick={() =>
 
                 fetch('/wishlists', {
                     method: 'DELETE',
@@ -18,7 +18,7 @@ export default function ButtonDeleteList({id, count, setCount}) {
                     .then(res => res.json())
                     .then(mes => alert(mes.message))
                     .then(setCount(count + 1))
-            }>Удалить
+            }>{<i class="fas fa-trash-alt"></i>}
             </div>
 
         </>

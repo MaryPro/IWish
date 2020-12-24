@@ -24,7 +24,7 @@ function AddWishListForm({count, setCount}) {
         })
             .then(res => res.json())
             // .then(setIndepCount(indepCount + 1))
-
+        e.target.wishListName.value = ''
 
     }
 
