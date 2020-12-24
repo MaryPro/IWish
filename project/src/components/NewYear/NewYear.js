@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import style from './NewYear.module.css'
-import { Button} from 'react-bootstrap'
 
 export default function NewYear() {
   const [show, setShow] = useState(false)
@@ -8,12 +7,17 @@ export default function NewYear() {
   const handleShow = () => setShow(!show);
   let script
 if(show){
-    script = document.createElement("script");
+    script = document.createElement("script")
+    script.className = 'ny';
     script.src = "https://uguide.ru/js/script/snowcursor.min.js";
     script.async = true;
     document.body.appendChild(script);
+
 }else{
-  if(script){ document.body.appendChild(script);}
+  if(script){ 
+    const rem = document.querySelector(".ny");
+    document.body.removeChild(rem)
+  }
 }
   return (
     <>

@@ -2,7 +2,7 @@ import {useDispatch} from 'react-redux';
 import { useState} from "react";
 import React from "react";
 import style from "./AddWishListForm.module.css"
-import {  Row, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 
 function AddWishListForm({count, setCount}) {
 

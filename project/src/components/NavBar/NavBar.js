@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Nav , Row, Col, Container} from 'react-bootstrap'
+import { Row, Col, Container} from 'react-bootstrap'
 import LoginModal from '../LoginModal/LoginModal'
 import SignupModal from '../SignupModal/SignupModal'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import style from './NavBar.module.css'
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function NavBar() {

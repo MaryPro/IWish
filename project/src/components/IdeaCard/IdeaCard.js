@@ -1,38 +1,33 @@
-import React, {useState, useEffect} from 'react'
-import { Col, Dropdown, FormControl } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Col, Dropdown } from 'react-bootstrap'
 import Star from './Star/Star'
 import style from './IdeaCard.module.css'
-import { Link } from 'react-router-dom'
-import AddWishListForm from '../AddWishListForm/AddWishListForm'
-import { fetchGetIdeasAC } from '../../redux/actionCreators'
-import { useDispatch } from 'react-redux'
 
 export default function IdeaCard({ idea, wishlists, res, setRes, }) {
   const [thisIdea, setThisIdea] = useState(idea)
   const [count, setCount] = useState(0)
-  const dispatch = useDispatch()
- 
+
   const saveIdea = (e) => {
     e.preventDefault()
-    setCount(count +1)
+    setCount(count + 1)
     const id = e.target.id;
-    
+
     fetch('/saveidea', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ id, idea })
     })
-    .then(res => res.json())
+      .then(res => res.json())
 
     fetch('/changeRate', {
       method: 'POST',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({thisIdea})
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ thisIdea })
     })
       .then(res => res.json())
       .then(updIdea => setThisIdea(() => updIdea))
 
-    }
+  }
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
@@ -62,13 +57,13 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
               </Dropdown.Toggle>
 
               <Dropdown.Menu >
-    
+
                 {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()} onClick={saveIdea} id={list._id}>
-                 {list.titleWish}
+                  {list.titleWish}
                 </Dropdown.Item>
                 )}
                 {/* <Dropdown.Divider /> */}
-                
+
               </Dropdown.Menu>
 
             </Dropdown>
