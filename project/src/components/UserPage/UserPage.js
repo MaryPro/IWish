@@ -11,7 +11,7 @@ export default function UserPage() {
     <>
       <Container>
         <PersonalBoard count={count} setCount={setCount}/>
-          Ваши листы
+        <hr />
          <WishLists count={count} setCount={setCount}/>
       </Container>
     </>

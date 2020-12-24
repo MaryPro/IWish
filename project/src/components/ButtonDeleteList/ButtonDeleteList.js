@@ -18,7 +18,7 @@ export default function ButtonDeleteList({id, count, setCount}) {
                     .then(res => res.json())
                     .then(mes => alert(mes.message))
                     .then(setCount(count + 1))
-            }>удалить список
+            }>Удалить
             </div>
 
         </>
