@@ -1,12 +1,10 @@
 .button{
 
-    width: 300px;
+    width: 50px;
     height: 40px;
     border: #4aa5ff;
     background: darkolivegreen;
-    float: left;
     text-align: center;
-    margin-top: -7px;
     color: white;
     border-radius: 2%;
 

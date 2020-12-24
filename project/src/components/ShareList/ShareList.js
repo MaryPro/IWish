@@ -10,7 +10,7 @@ export default function ShareList({id, user}) {
         <CopyToClipboard text={state.value}
                          onCopy={() => setState({copied: true})}>
 
-            <button className={style.button} onClick={() => alert('Ссылка скоприрована в буфер обмена')}>Скопировать ссылку на список</button>
+    <button className={style.button} onClick={() => alert('Ссылка скоприрована в буфер обмена')}>{<i class="fas fa-external-link-alt"></i>}</button>
         </CopyToClipboard>
     )
 }
