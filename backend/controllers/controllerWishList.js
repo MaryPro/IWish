@@ -36,7 +36,7 @@ module.exports.addWishListToBase = async function (req, res) {
 module.exports.getWishList = async function (req, res) {
     const {id} = req.query
     try {
-        const goods = await WishList.find({user: id});
+        const goods = await WishList.find({user: id}).populate('gifts');
         if (goods) {
             return res.status(200).json(goods)
             //     success: false,
