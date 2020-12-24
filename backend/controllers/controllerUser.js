@@ -69,7 +69,7 @@ module.exports.registration = async function (req, res) {
   } catch {
     return res.status(403).json({
       success: false,
-      message: 'Такой логин или почта уже используютя!',
+      message: 'Такой логин или почта заняты!',
     })
   }
 }
