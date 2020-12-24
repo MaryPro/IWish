@@ -20,7 +20,7 @@ export default function WishLists({count, setCount}) {
         const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
         dispatch(fetchGetWishListAC(userID))
     }, [count])
-
+console.log(wishlists)
     return (
         <> 
        
