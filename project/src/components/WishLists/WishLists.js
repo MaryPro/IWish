@@ -20,18 +20,19 @@ export default function WishLists({count, setCount}) {
         const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
         dispatch(fetchGetWishListAC(userID))
     }, [count])
-
+console.log(wishlists)
     return (
         <> 
-       
+          <Row>
             <AddWishListForm count={count} setCount={setCount}/>
-        
-        {wishlists && wishlists.map((wishlist) => 
+          </Row>
          
-            <CarouselList wishlist={wishlist} count={count} setCount={setCount}/>
-        
+        {wishlists && wishlists.map((wishlist) => 
+          <CarouselList wishlist={wishlist} count={count} setCount={setCount} />
             )}
+         
         </>
     )
 }
 
+ 

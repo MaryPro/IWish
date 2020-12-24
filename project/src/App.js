@@ -20,7 +20,6 @@ function App() {
   if (!mountedComponent) return <div />
 
   return (
-
     <>
       <BrowserRouter>
         <ThemeProvider theme={themeMode}>

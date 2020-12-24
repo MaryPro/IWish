@@ -1,13 +1,22 @@
-.form{
+.form {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid darkgreen;
+  justify-content: space-around;
+}
+
+.input{
     border-color: #1e7e34;
     border-width: 1px;
     border-radius: 5px;
-    background-color: #c9d1d9;
+    width: 300px
 }
+
 .button{
-    color: #1e7e34;
+    color: white;
     margin-left: 5px;
     border-radius: 5px;
     width: 150px;
-    background-color: #20c997;
+    background-color: darkgreen;
 }
