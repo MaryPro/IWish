@@ -2,6 +2,8 @@ import {useDispatch} from 'react-redux';
 import { useState} from "react";
 import React from "react";
 import style from "./AddWishListForm.module.css"
+import {  Row, Col } from 'react-bootstrap'
+
 function AddWishListForm({count, setCount}) {
 
     const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
@@ -28,15 +30,19 @@ function AddWishListForm({count, setCount}) {
     return (
 
         <>
-            <form  onSubmit={addWishList}>
-                < input className={style.form} type="text"
-                        name="wishListName"
-                        placeholder="Введите название нового листа желаний"
-                        onChange={(e) => setInputText(e.target.value)}
-                        required/>
-                <button className={style.button} type="submit">Добавить список  </button>
+          <Col  className={style.form} md={{ span: 6, offset: 3 }}>
+        
+              <form  onSubmit={addWishList}>
+                  < input className={style.input} type="text"
+                          name="wishListName"
+                          placeholder="Введите имя нового списка желаний"
+                          onChange={(e) => setInputText(e.target.value)}
+                          required/>
+                  <button className={style.button} type="submit">Добавить список</button>
 
-            </form>
+              </form>
+           
+          </Col>
         </>
 
     )

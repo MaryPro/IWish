@@ -3,16 +3,17 @@ import {Row,Col } from 'react-bootstrap'
 import Informer from '../Informer/Informer'
 import style from './PersonalBoard.module.css'
 import SendAvatar from './SendAvatar/SendAvatar'
+import { useSelector } from 'react-redux';
 
 export default function PersonalBoard({count, setCount}) {
   const [userLog, setLogUser] = useState({ currentUser: { token: '', user: { login: '' } }, isAuth: false })
   // const [count, setCount] = useState(0)
-
+  const {wishlists} =  useSelector(store => store)
   useEffect(() => {
     const user = localStorage.getItem('user')
       user && setLogUser(JSON.parse(user))
   }, [count])
-
+console.log(wishlists);
   return (
     <div >
       <Row className={style.row}>
@@ -26,7 +27,13 @@ export default function PersonalBoard({count, setCount}) {
         </Col>
         <Col>
           <h2>Личный кабинет</h2>
-          <p>Тут какая то личная информация</p>
+              <ul>
+               Все списки {wishlists && wishlists.map(el => 
+                <li><a href={`#${el.titleWish}`}>{el.titleWish}</a></li>
+                
+                )}
+              </ul>
+
         </Col>
         <Col className={style.informer}>
         <Informer/>

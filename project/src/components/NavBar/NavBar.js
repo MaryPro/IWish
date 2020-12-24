@@ -7,6 +7,7 @@ import { logoutUserAC } from "../../redux/actionCreatorsUser";
 import style from './NavBar.module.css'
 import { Link, NavLink } from "react-router-dom";
 
+
 function NavBar() {
 
   //функция с модалкой
