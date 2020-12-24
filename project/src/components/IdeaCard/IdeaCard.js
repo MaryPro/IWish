@@ -15,12 +15,12 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
   const saveIdea = (e) => {
     e.preventDefault()
     setCount(count +1)
-    const wishListTitle = e.target.innerText;
+    const id = e.target.id;
     
     fetch('/saveidea', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ wishListTitle, idea })
+      body: JSON.stringify({ id, idea })
     })
     .then(res => res.json())
 
@@ -33,8 +33,6 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
       .then(updIdea => setThisIdea(() => updIdea))
 
     }
-   
-    console.log(thisIdea);
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
@@ -65,7 +63,7 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
 
               <Dropdown.Menu >
     
-                {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()} onClick={saveIdea}>
+                {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()} onClick={saveIdea} id={list._id}>
                  {list.titleWish}
                 </Dropdown.Item>
                 )}

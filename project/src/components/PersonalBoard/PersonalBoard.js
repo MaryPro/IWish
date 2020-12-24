@@ -13,7 +13,6 @@ export default function PersonalBoard({count, setCount}) {
     const user = localStorage.getItem('user')
       user && setLogUser(JSON.parse(user))
   }, [count])
-console.log(wishlists);
   return (
     <div >
       <Row className={style.row}>

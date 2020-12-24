@@ -30,9 +30,8 @@ module.exports.addidea = async function (req,res) {
 
 module.exports.putRate = async function (req,res) {
   const  { thisIdea } = req.body
-  console.log(thisIdea.rate, '--------');
+
   const num = thisIdea.rate + 1
-  console.log(num, '--------');
 
   await Good.findByIdAndUpdate({_id: thisIdea._id}, {rate: num}, function(err, updIdea){
     res.json(updIdea)
