@@ -6,6 +6,8 @@ import IdeasBoard from './components/IdeasBoard/IdeasBoard'
 import CategoryList from './components/CategoryList/CategoryList'
 import UserPage from './components/UserPage/UserPage'
 import ViewShareList from './components/ViewShareList/ViewShareList'
+import NewYear from './components/NewYear/NewYear'
+
 import { GlobalStyles } from './components/GlobalStyles';
 import { lightTheme, darkTheme } from './components/Themes'
 import { useDarkMode } from './components/useDarkMode'
@@ -25,10 +27,10 @@ function App() {
         <ThemeProvider theme={themeMode}>
           <GlobalStyles />
           <NavBar />
-
+          <NewYear />
           {/* <Toggle theme={theme} toggleTheme={themeToggler} /> */}
           <Switch>
-
+          
             <Route exact path='/'>
 
               <div className={style.main}>

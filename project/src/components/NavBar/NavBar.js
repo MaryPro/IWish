@@ -66,9 +66,16 @@ function NavBar() {
                 </Col>
               {/* </ul> */}
              </Row>
+             <Row>
+             </Row>
             {/* </div> */}
         </Container>
+        {/* <div className={style.garland}>
+          <div style={{height: '30px', background: 'url(https://uguide.ru/js/script/girlianda_uguide_ru_2.gif) repeat-x 100%'}}></div>
+        </div> */}
+             
           </nav>
+         
     </>
   )
 

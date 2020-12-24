@@ -15,7 +15,7 @@ export default function CarouselList({ wishlist, count, setCount }) {
         <a name={wishlist.titleWish}></a>
 
         <div  className={style.carousel} key={Math.random()}>
-          <Col md={6}>
+          <Col md={7}>
             <p>{wishlist.titleWish}</p>
           </Col>
           <Col md={{offset:3, span: 2}}>
