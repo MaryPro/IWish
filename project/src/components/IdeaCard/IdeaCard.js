@@ -4,10 +4,14 @@ import Star from './Star/Star'
 import style from './IdeaCard.module.css'
 import { Link } from 'react-router-dom'
 import AddWishListForm from '../AddWishListForm/AddWishListForm'
+import { fetchGetIdeasAC } from '../../redux/actionCreators'
+import { useDispatch } from 'react-redux'
+
 export default function IdeaCard({ idea, wishlists, res, setRes, }) {
   const [thisIdea, setThisIdea] = useState(idea)
   const [count, setCount] = useState(0)
- let star = 0
+  const dispatch = useDispatch()
+ 
   const saveIdea = (e) => {
     e.preventDefault()
     setCount(count +1)
@@ -19,8 +23,6 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
       body: JSON.stringify({ wishListTitle, idea })
     })
     .then(res => res.json())
-    .then(ok => console.log(ok))
-
 
     fetch('/changeRate', {
       method: 'POST',
@@ -28,10 +30,12 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
       body: JSON.stringify({thisIdea})
     })
       .then(res => res.json())
-      .then(updIdea => setThisIdea(updIdea))
-  }
+      .then(updIdea => setThisIdea(() => updIdea))
 
+    }
+   
     console.log(thisIdea);
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -48,42 +52,39 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
   ));
 
   return (
-      <>
+    <>
+      <div className={style.card}>
+        <Col>
 
+          <div className={style.ideaimg} >
+            <Dropdown>
+              <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                {<i className="fas fa-heart"></i>}
+              </Dropdown.Toggle>
 
+              <Dropdown.Menu >
+    
+                {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()} onClick={saveIdea}>
+                 {list.titleWish}
+                </Dropdown.Item>
+                )}
+                {/* <Dropdown.Divider /> */}
+                
+              </Dropdown.Menu>
 
-    <div className={style.card}>
-      <Col>
+            </Dropdown>
 
-        <div className={style.ideaimg} >
-          <Dropdown>
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-              {<i className="fas fa-heart"></i>}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu >
-   
-              {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()}>
-                <Link to='/dashboard' onClick={saveIdea}>{list.titleWish}</Link>
-              </Dropdown.Item>
-              )}
-              {/* <Dropdown.Divider /> */}
-              
-            </Dropdown.Menu>
-
-          </Dropdown>
-
-          <img src={idea.img} alt={idea.titleGift} width="220" height='220' />
-        </div>
-
-        <div className={style.description}>
-          <Star thisIdea={thisIdea} />
-          <div className={style.titleGift}>
-            {idea.titleGift}
+            <img src={idea.img} alt={idea.titleGift} width="220" height='220' />
           </div>
-        </div>
-      </Col>
-    </div>
+
+          <div className={style.description}>
+            <Star thisIdea={thisIdea} />
+            <div className={style.titleGift}>
+              {idea.titleGift}
+            </div>
+          </div>
+        </Col>
+      </div>
     </>
   )
 }

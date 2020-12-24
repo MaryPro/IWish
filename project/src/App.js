@@ -11,7 +11,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+        <NavBar />  
       <Switch>
         <Route exact path='/'>
           <div  className={style.main}>
