@@ -9,8 +9,6 @@ module.exports.addWishListToBase = async function (req, res) {
             userID
             // , giftsNotHold
         } = req.body
-        console.log(req.body)
-        console.log(inputText)
 
         // const findList = await WishList.findOne(inputText)
         const user = new WishList({
@@ -59,10 +57,6 @@ module.exports.getWishListShare = async function (req, res) {
         let originList = giftsList[0].gifts
         let cloneList = giftsListNotHold[0].giftsNotHold
 
-        console.log(originList)
-
-
-        console.log(cloneList)
         if (goods && userNickname && giftsList) {
 
 
@@ -77,7 +71,7 @@ module.exports.getWishListShare = async function (req, res) {
 
 module.exports.deleteWishList = async function (req, res) {
     const {id} = req.body
-    console.log(id)
+
     try {
         const goods = await WishList.findOneAndDelete({_id: id});
         if (!goods) {
@@ -93,10 +87,10 @@ module.exports.deleteWishList = async function (req, res) {
 }
 
 module.exports.saveidea = async function (req,res) {
-  const  {wishListTitle, idea} = req.body
-  const old = await WishList.findOne({titleWish: wishListTitle})
+  const  {id, idea} = req.body
+  const old = await WishList.findOne({_id: id})
   old.gifts.push(idea)
-  await WishList.findOneAndUpdate({titleWish: wishListTitle}, {gifts: old.gifts}, function(err, wList){
+  await WishList.findOneAndUpdate({_id: id}, {gifts: old.gifts}, function(err, wList){
    res.json('okey its back')
   });
 }

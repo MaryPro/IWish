@@ -1,12 +1,11 @@
 .button{
 
-    width: 150px;
+    width: 50px;
     height: 40px;
     border: #4aa5ff;
     background: #ad1111;
     float: right;
     text-align: center;
-    margin-top: -7px;
     color: white;
     border-radius: 5%;
     padding: 8px;

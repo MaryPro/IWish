@@ -2,12 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Form, Button, Modal } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { fetchUserLoginAC } from "../../redux/actionCreatorsUser";
-import IdeasBoard from "../IdeasBoard/IdeasBoard";
-import PersonalBoard from "../PersonalBoard/PersonalBoard";
-import {render} from "@testing-library/react";
-
 
 //модалка
 function LoginModal({ show, setShow }) {

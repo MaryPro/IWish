@@ -40,7 +40,7 @@ export default function AddCard({ show, setShow }) {
   return (
     <div>
       <hr />
-      <Button onClick={handleShow}>Создать идею</Button>
+      <Button onClick={handleShow} style={{backgroundColor: 'darkgreen', border: 'darkgreen'}}>Создать идею</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -70,10 +70,10 @@ export default function AddCard({ show, setShow }) {
                   label={category}
                 />
               ))}
-            <Form.Group>
-              <Form.File id="formControlFile1" label="File input" name="file" />
-              <Form.Control name="img" type="url" placeholder="URL" />
             </Form.Group>
+            <Form.Group>
+              <Form.File id="formControlFile1"  name="file" />
+              <Form.Control name="img" type="url" placeholder="URL" />
             </Form.Group>
             <Button variant="success" type="submit">
               Добавить
