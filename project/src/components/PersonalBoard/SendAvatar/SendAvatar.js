@@ -29,11 +29,9 @@ export default function SendAvatar({ currUser,setCount,  count }) {
       <Col md={6}>
         <Accordion defaultActiveKey="0">
           <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                Загрузить фото
+              <Accordion.Toggle as={Card.Header} eventKey="1" >
+                Загрузить фото {<i class="fas fa-arrow-down"></i>}
               </Accordion.Toggle>
-            </Card.Header>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
                 <form encType="multipart/form-data" method="POST" onSubmit={sendFoto} name="fileinfo">
