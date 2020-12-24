@@ -51,6 +51,7 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
     </a>
   ));
 
+
   return (
     <>
       <div className={style.card}>
