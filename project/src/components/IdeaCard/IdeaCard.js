@@ -47,6 +47,7 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
     </a>
   ));
 
+
   return (
       <>
 
@@ -54,6 +55,7 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
 
     <div className={style.card}>
       <Col>
+
 
         <div className={style.ideaimg} >
           <Dropdown>
@@ -77,7 +79,9 @@ export default function IdeaCard({ idea, wishlists, res, setRes, }) {
         </div>
 
         <div className={style.description}>
+
           <Star thisIdea={thisIdea} />
+
           <div className={style.titleGift}>
             {idea.titleGift}
           </div>
