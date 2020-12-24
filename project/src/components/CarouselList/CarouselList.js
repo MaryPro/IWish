@@ -15,10 +15,10 @@ export default function CarouselList({ wishlist, count, setCount }) {
         <a name={wishlist.titleWish}></a>
 
         <div  className={style.carousel} key={Math.random()}>
-          <Col>
+          <Col md={6}>
             <p>{wishlist.titleWish}</p>
           </Col>
-          <Col>
+          <Col md={{offset:3}}>
             <ShareList id={wishlist._id} user={wishlist.user} />
             <ButtonDeleteList id={wishlist._id} count={count} setCount={setCount} />
           </Col>
