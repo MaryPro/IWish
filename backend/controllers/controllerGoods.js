@@ -27,3 +27,11 @@ module.exports.addidea = async function (req,res) {
     await idea.save()
     return res.json(idea)
 }
+module.exports.putRate = async function (req,res) {
+  const  { thisIdea } = req.body
+  const num = thisIdea.rate + 1
+  await Good.findByIdAndUpdate({_id: thisIdea._id}, {rate: num}, function(err, updIdea){
+    res.json(updIdea)
+  })
+}
+ 

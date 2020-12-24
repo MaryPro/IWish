@@ -1,41 +1,93 @@
-import { Col } from 'react-bootstrap'
+import React, {useState, useEffect} from 'react'
+import { Col, Dropdown, FormControl } from 'react-bootstrap'
 import Star from './Star/Star'
 import style from './IdeaCard.module.css'
+import { Link } from 'react-router-dom'
+import AddWishListForm from '../AddWishListForm/AddWishListForm'
+export default function IdeaCard({ idea, wishlists, res, setRes, }) {
+  const [thisIdea, setThisIdea] = useState(idea)
+  const [count, setCount] = useState(0)
+ let star = 0
+  const saveIdea = (e) => {
+    e.preventDefault()
+    setCount(count +1)
+    const wishListTitle = e.target.innerText;
+    
+    fetch('/saveidea', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ wishListTitle, idea })
+    })
+    .then(res => res.json())
+    .then(ok => console.log(ok))
 
-export default function IdeaCard({ idea }) {
-console.log(idea)
+
+    fetch('/changeRate', {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({thisIdea})
+    })
+      .then(res => res.json())
+      .then(updIdea => setThisIdea(updIdea))
+  }
+
+    console.log(thisIdea);
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+      href=""
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+      className={style.heart}
+    >
+      {children}
+      &#x25bc;
+    </a>
+  ));
+
+
   return (
+      <>
+
+
+
     <div className={style.card}>
       <Col>
-        {/* <DropdownButton
-          menuAlign="right" */}
-          {/* title= */}
-          {}
-          {/* id="dropdown-menu-align-right"
-        >
-          <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-          <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-          <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-        </DropdownButton> */}
 
 
         <div className={style.ideaimg} >
-          <div className={style.heart}>
-            {<i className="fas fa-heart"></i>}
-          </div>
-          <img src={idea.img} alt={idea.titleGift} width="220" height='220'/>
+          <Dropdown>
+            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+              {<i className="fas fa-heart"></i>}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu >
+   
+              {wishlists && wishlists.map(list => <Dropdown.Item eventKey="1" key={list + Math.random()}>
+                <Link to='/dashboard' onClick={saveIdea}>{list.titleWish}</Link>
+              </Dropdown.Item>
+              )}
+              {/* <Dropdown.Divider /> */}
+              
+            </Dropdown.Menu>
+
+          </Dropdown>
+
+          <img src={idea.img} alt={idea.titleGift} width="220" height='220' />
         </div>
 
         <div className={style.description}>
-          <Star idea={idea.rate}/>
+
+          <Star thisIdea={thisIdea} />
+
           <div className={style.titleGift}>
             {idea.titleGift}
           </div>
         </div>
       </Col>
     </div>
+    </>
   )
 }
-

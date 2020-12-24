@@ -1,4 +1,4 @@
-import { LOGIN_USER, REG_USER, LOGOUT_USER } from '../actionTypes'
+import { LOGIN_USER, REG_USER, LOGOUT_USER, UPDATE_USER } from '../actionTypes'
 
 const defaultState = {
   currentUser: {},
@@ -33,6 +33,18 @@ export function userReducer(state = defaultState, action) {
       localStorage.removeItem('user')
 
       return { ...state, currentUser: {}, isAuth: false }
+
+      case UPDATE_USER:
+      const updUser = {
+        currentUser: action.payload,
+        isAuth: action.payload.isAuth
+      }
+
+      localStorage.removeItem('user')
+      localStorage.setItem('user', JSON.stringify(updUser))
+
+      return { ...state, ...updUser }
+
     default:
       return state
   }

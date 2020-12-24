@@ -14,7 +14,7 @@ function LoginModal({ show, setShow }) {
 
   const resultLogin = useSelector(store => store.user)
   const dispatch = useDispatch();
-  const [state, setState] = useState('')
+  const [state, setState] = useState(null)
 
   const subLog = (e) => {
     e.preventDefault();
@@ -44,8 +44,10 @@ function LoginModal({ show, setShow }) {
 
         <Modal.Header closeButton>
 
-          <Modal.Title>  <div>{state}</div>Пожалуйста, введите имя пользователя и пароль</Modal.Title>
-        </Modal.Header>
+        <Modal.Title>
+          {state && <div class="alert alert-danger" role="alert">{state}</div>}
+        </Modal.Title>
+             </Modal.Header>
         <Modal.Body>
 
           <Form onSubmit={subLog}>

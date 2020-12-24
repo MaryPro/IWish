@@ -2,23 +2,23 @@ import {useDispatch} from 'react-redux';
 import { useState} from "react";
 import React from "react";
 import style from "./AddWishListForm.module.css"
-function AddWishListForm({indepCount, setIndepCount}) {
+function AddWishListForm({count, setCount}) {
 
     const userID = (JSON.parse(localStorage.getItem('user')).currentUser.user._id);
 
     const [inputText, setInputText] = useState(null)
-    const gifts = 'aaaa'
-    const giftsNotHold = '2232323'
+
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
-        setIndepCount(indepCount + 1)
+        setCount(count + 1)
         fetch('/wishlists', {
             method: 'POST',
             headers: {
                 'Content-type': 'Application/json',
             },
-            body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID, giftsNotHold: giftsNotHold})
+
+            body: JSON.stringify({inputText: inputText,  userID: userID})
         })
             .then(res => res.json())
             // .then(setIndepCount(indepCount + 1))

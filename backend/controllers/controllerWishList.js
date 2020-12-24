@@ -24,7 +24,7 @@ module.exports.addWishListToBase = async function (req, res) {
         return res.status(200).json({
             success: true,
             message: 'Успешно добавлено'
-
+ 
         })
 
     } catch {
@@ -90,4 +90,13 @@ module.exports.deleteWishList = async function (req, res) {
     } catch (e) {
         res.send({message: "Server error"})
     }
+}
+
+module.exports.saveidea = async function (req,res) {
+  const  {wishListTitle, idea} = req.body
+  const old = await WishList.findOne({titleWish: wishListTitle})
+  old.gifts.push(idea)
+  await WishList.findOneAndUpdate({titleWish: wishListTitle}, {gifts: old.gifts}, function(err, wList){
+   res.json('okey its back')
+  });
 }
