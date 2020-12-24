@@ -3,7 +3,7 @@ import Star from './Star/Star'
 import style from './IdeaCard.module.css'
 
 export default function IdeaCard({ idea }) {
-
+console.log(idea)
   return (
     <div className={style.card}>
       <Col>
@@ -19,17 +19,17 @@ export default function IdeaCard({ idea }) {
           <Dropdown.Divider />
           <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
         </DropdownButton> */}
-          
-        
+
+
         <div className={style.ideaimg} >
           <div className={style.heart}>
             {<i className="fas fa-heart"></i>}
           </div>
           <img src={idea.img} alt={idea.titleGift} width="220" height='220'/>
         </div>
-       
+
         <div className={style.description}>
-          <Star idea={idea}/>
+          <Star idea={idea.rate}/>
           <div className={style.titleGift}>
             {idea.titleGift}
           </div>

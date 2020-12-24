@@ -1,15 +1,22 @@
 const WishList = require('../models/WishList')
 const User = require('../models/User')
-const Good = require('../models/Good')
-module.exports.addWishListToBase  = async function(req, res) {
+// const Good = require('../models/Good')
+module.exports.addWishListToBase = async function (req, res) {
     try {
-        const { inputText, gifts, userID} = req.body
+        const {
+            inputText,
+            // , gifts,
+            userID
+            // , giftsNotHold
+        } = req.body
         console.log(req.body)
         console.log(inputText)
+
         // const findList = await WishList.findOne(inputText)
         const user = new WishList({
             titleWish: inputText,
-                gifts: gifts,
+            //     gifts: gifts,
+            // giftsNotHold: giftsNotHold,
             user: userID,
             display: true
         })
@@ -38,7 +45,7 @@ module.exports.getWishList = async function (req, res) {
         }
         return res.status(404).json('success: false')
     } catch (e) {
-        res.send({ message: "Server error" })
+        res.send({message: "Server error"})
     }
 }
 
@@ -48,18 +55,28 @@ module.exports.getWishListShare = async function (req, res) {
         const goods = await WishList.find({_id: id});
         const userNickname = await User.find({_id: user})
         const giftsList = await WishList.find({_id: id}).populate('gifts')
+        const giftsListNotHold = await WishList.find({_id: id}).populate('giftsNotHold')
+        let originList = giftsList[0].gifts
+        let cloneList = giftsListNotHold[0].giftsNotHold
+
+        console.log(originList)
+
+
+        console.log(cloneList)
         if (goods && userNickname && giftsList) {
-            return res.status(200).json({goods, userNickname, giftsList})
+
+
+            return res.status(200).json({goods, userNickname, originList})
 
         }
         return res.status(404).json('success: false')
     } catch (e) {
-        res.send({ message: "Server error" })
+        res.send({message: "Server error"})
     }
 }
 
 module.exports.deleteWishList = async function (req, res) {
-    const { id } = req.body
+    const {id} = req.body
     console.log(id)
     try {
         const goods = await WishList.findOneAndDelete({_id: id});
@@ -71,6 +88,6 @@ module.exports.deleteWishList = async function (req, res) {
         }
         return res.status(200).json({success: true, message: "Список удален"})
     } catch (e) {
-        res.send({ message: "Server error" })
+        res.send({message: "Server error"})
     }
 }

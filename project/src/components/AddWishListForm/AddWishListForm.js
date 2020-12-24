@@ -8,6 +8,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
 
     const [inputText, setInputText] = useState(null)
     const gifts = 'aaaa'
+    const giftsNotHold = '2232323'
     const dispatchAdd = useDispatch()
     const addWishList = (e) => {
         e.preventDefault()
@@ -17,7 +18,7 @@ function AddWishListForm({indepCount, setIndepCount}) {
             headers: {
                 'Content-type': 'Application/json',
             },
-            body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID})
+            body: JSON.stringify({inputText: inputText, gifts: gifts, userID: userID, giftsNotHold: giftsNotHold})
         })
             .then(res => res.json())
             // .then(setIndepCount(indepCount + 1))
