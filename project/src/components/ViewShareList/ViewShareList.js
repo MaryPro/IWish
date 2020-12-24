@@ -1,22 +1,14 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-
+import {Container} from 'react-bootstrap'
 import IdeaCard from '../IdeaCard/IdeaCard'
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "./carousel.min.css"; // requires a loader
 import {Carousel} from 'react-responsive-carousel';
 
 
 function ViewShareList() {
-
-    let settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    };
 
     const {id, user} = useParams()
     const [state, setState] = useState()
@@ -37,23 +29,22 @@ function ViewShareList() {
 
     return (
         <>
-            <div style={{marginTop: '5%'}}>
-                <h1> Список
-                    желаний: {state && state.goods[0].titleWish}</h1> Пользователь <h1>{state && state.userNickname[0].login}</h1>
+            <Container>
+                <div style={{marginTop: '5%'}}>
+                    <h1> Список
+                        желаний: {state && state.goods[0].titleWish}</h1> <h2>Пользователь</h2> <h1>{state && state.userNickname[0].login}</h1>
 
-                хочет получить в подарок что-то из этого:
-                <br></br>
+                    хочет получить в подарок что-то из этого:
+                    <br></br>
 
-                <Carousel>
-                    {state && state.originList.map(el => <div><IdeaCard key={el._id} idea={el}/></div>)}
+                    <Carousel infiniteLoop={true} autoPlay={true} showArrows={true} emulateTouch={true}
+                              showThumbs={true}>
+                        {state && state.originList.map(el => <div><IdeaCard key={el._id} idea={el}/></div>)}
 
-                </Carousel>
+                    </Carousel>
 
-
-                {state && state.originList.map(el => <div style={{float: "left"}}><IdeaCard key={el._id} idea={el}/>
-                </div>)}
-
-            </div>
+                </div>
+            </Container>
         </>
     )
 

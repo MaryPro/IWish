@@ -1,14 +1,16 @@
 import IdeaCard from '../IdeaCard/IdeaCard'
 import style from './CarouselList.module.css'
-import { Alert, Carousel, Col, Row } from "react-bootstrap"
+import { Alert, Col, Row } from "react-bootstrap"
 import ButtonDeleteList from "../ButtonDeleteList/ButtonDeleteList";
 import ShareList from '../ShareList/ShareList'
+import "./carousel.min.css"; // requires a loader
+import {Carousel} from 'react-responsive-carousel';
+import React from "react";
 
 export default function CarouselList({ wishlist, count, setCount }) {
 
   return (
     <>
-
       {/* <div className={style.carousel}> */}
         <a name={wishlist.titleWish}></a>
 
@@ -20,16 +22,14 @@ export default function CarouselList({ wishlist, count, setCount }) {
             <ShareList id={wishlist._id} user={wishlist.user} />
             <ButtonDeleteList id={wishlist._id} count={count} setCount={setCount} />
           </Col>
-        
 
         </div>
       {/* </div> */}
+        <Carousel infiniteLoop={true} autoPlay={true} showArrows={true} emulateTouch={true} showThumbs={true} >
 
-
-      <Carousel>
-        {wishlist.gifts && wishlist.gifts.map(idea => <Carousel.Item key={idea + Math.random()}>
+        {wishlist.gifts && wishlist.gifts.map(idea =>
           < IdeaCard idea={idea} key={Math.random()} />
-        </Carousel.Item>
+
         )}
       </Carousel>
       <hr/>
