@@ -2,7 +2,8 @@
   background-color: rgba(214, 173, 95, 0.4);
   /* background-color: #D6AD5F; */
 
-  margin: 7px 5px;
+  /* margin: 7px 5px; */
+  margin-top: 5px;
   width: 250px;
   height: 300px;
   display: flex;
