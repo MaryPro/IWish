@@ -26,7 +26,7 @@ export default function IdeaList({ dispatch, ideas, res, setRes, category }) {
   return (
     <div className={style.list}>
       <Row>
-        {res && res.map(el => <div key={el.id + Math.random()}> <IdeaCard idea={el} wishlists={wishlists} res={res} setRes={setRes} /> </div>)}
+        {res && res.map(el => <div key={el.id + Math.random()} className={style.card}> <IdeaCard  idea={el} wishlists={wishlists} res={res} setRes={setRes} /> </div>)}
       </Row>
     </div>
   )
