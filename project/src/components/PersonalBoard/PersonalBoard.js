@@ -28,7 +28,7 @@ export default function PersonalBoard({count, setCount}) {
           <h2>Личный кабинет</h2>
               <ul>
                Все списки {wishlists && wishlists.map(el => 
-                <li><a href={`#${el.titleWish}`}>{el.titleWish}</a></li>
+                <li ><a href={`#${el.titleWish}`} className={style.li} >{el.titleWish}</a></li>
                 
                 )}
               </ul>
