@@ -14,27 +14,33 @@ import { useDarkMode } from './components/useDarkMode'
 import { ThemeProvider } from 'styled-components'
 import Toggle from './components/Toggler'
 import './App.css'
+import { useState } from 'react'
 
 function App() {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
-
+  const [show, setShow] = useState(false)
+  const handleShow = () => setShow(!show);
+  
   if (!mountedComponent) return <div />
+ 
 
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={themeMode}>
           <GlobalStyles />
-          <NavBar />
-          <NewYear />
-          {/* <Toggle theme={theme} toggleTheme={themeToggler} /> */}
+          <NavBar handleShow={handleShow}/>
+          <NewYear show={show} setShow={setShow}/>
+     
+
           <Switch>
           
             <Route exact path='/'>
-
+        
               <div className={style.main}>
                 <Container>
+                {/* <Toggle theme={theme} toggleTheme={themeToggler} /> */}
                   <h1> IWish </h1>
                   <div> Приложение по подбору подарков </div>
                   <div><Link to="/ideas/Все категории"> <img className={style.img} src='https://pngicon.ru/file/uploads/1303507150_box3-256x256.png' /> </Link></div>
