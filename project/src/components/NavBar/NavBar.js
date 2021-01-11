@@ -65,7 +65,7 @@ function NavBar({ handleShow }) {
                 <NavLink className={`nav-link ${style.menu}`} to="/dashboard" >{userLog.currentUser.user.login}</NavLink></div>}
               {userLog.isAuth && <div className="nav-item">
                 <NavLink className={`nav-link ${style.menu}`} to="/" onClick={logout}>Выйти</NavLink></div>}
-              <img className={style.d} src="https://cdn.icon-icons.com/icons2/480/PNG/256/Christmas-Ornament_47140.png" onClick={handleShow} width='50px' alt="" />
+              <img className={style.d} src="https://cdn.icon-icons.com/icons2/964/PNG/128/christmas_tree_ball_icon-icons.com_74635.png" onClick={handleShow} width='50px' alt="" />
 
             </Col>
             {/* </ul> */}
